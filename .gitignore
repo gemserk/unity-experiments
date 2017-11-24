@@ -1,0 +1,48 @@
+# =============== #
+# Unity generated #
+# =============== #
+Temp/
+Obj/
+UnityGenerated/
+Library/
+ 
+# ===================================== #
+# Visual Studio / MonoDevelop generated #
+# ===================================== #
+ExportedObj/
+*.svd
+*.userprefs
+*.csproj
+*.pidb
+*.suo
+*.sln
+*.user
+*.unityproj
+*.booproj
+ 
+# ============ #
+# OS generated #
+# ============ #
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+.idea/
+
+/jumpyninja/Builds
+#added just to be able to leave stuff, like gifs and avis, somewhere without polluting my disk everywhere
+
+/tmpStuff   
+
+#find reference 2 cache
+/jumpyninja/Assets/FR2_Cache.asset
+/jumpyninja/Assets/FR2_Cache.asset.meta
+
+#assetbundle
+/jumpyninja/AssetBundles/
+/jumpyninja/Assets/StreamingAssets/
+/jumpyninja/Assets/StreamingAssets.meta
