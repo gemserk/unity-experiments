@@ -1,18 +1,18 @@
 using UnityEditor;
 using Gemserk.Values;
 
-[CustomEditor(typeof(TestContainerAsset), true)]
-public class TestContainerAssetEditor : ValueContainerEditorBase {
+[CustomEditor(typeof(ValuesContainerAsset), true)]
+public class ValuesContainerAssetEditor : ValueContainerEditorBase {
 
 	public override void AddNewElement()
 	{
-		TestContainerAsset container = (TestContainerAsset) target;
+		ValuesContainerAsset container = (ValuesContainerAsset) target;
 		container.valueContainer.values.Add (new ValueContainerUnity.ValueDefinitionEntry ());
 	}
 
 	public override void RemoveElement (int index)
 	{
-		TestContainerAsset container = (TestContainerAsset) target;
+		ValuesContainerAsset container = (ValuesContainerAsset) target;
 		container.valueContainer.values.RemoveAt (index);
 	}
 

@@ -1,8 +1,9 @@
 using Gemserk.Values;
+using UnityEngine;
 
 namespace Gemserk.Values {
 
-	public class TestContainerCustom : ValueContainerBase {
+	public class TestContainerCustom : MonoBehaviour, ValueContainer {
 
 		#region implemented abstract members of ValueContainerBase
 
@@ -11,7 +12,7 @@ namespace Gemserk.Values {
 
 		Value _megaValue; 
 
-		public override System.Collections.Generic.List<string> GetKeys ()
+		public System.Collections.Generic.List<string> GetKeys ()
 		{
 			return new System.Collections.Generic.List<string> () {
 				{ "Health" },
@@ -20,7 +21,7 @@ namespace Gemserk.Values {
 			};
 		}
 
-		public override Value Get (string key)
+		public Value Get (string key)
 		{
 			if (key.Equals ("Health"))
 				return _health;
@@ -32,6 +33,12 @@ namespace Gemserk.Values {
 				return _megaValue;
 			
 			return null;
+		}
+
+		public string Name {
+			get { 
+				return gameObject.name;
+			}
 		}
 
 		#endregion

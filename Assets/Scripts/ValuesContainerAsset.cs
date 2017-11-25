@@ -3,7 +3,7 @@ using Gemserk.Values;
 using System.Collections.Generic;
 
 [CreateAssetMenu(menuName="Gemserk/Values Container")]
-public class TestContainerAsset : ScriptableObject, ValueContainer {
+public class ValuesContainerAsset : ScriptableObject, ValueContainer {
 
 	public ValueContainerUnity valueContainer;
 

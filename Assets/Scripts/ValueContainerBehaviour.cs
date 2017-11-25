@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace Gemserk.Values {
 
-	public class ValueContainerBehaviour : ValueContainerBase {
+	public class ValueContainerBehaviour : MonoBehaviour, ValueContainer {
 
 		public ValueContainerUnity valueContainer;
 
@@ -10,14 +11,20 @@ namespace Gemserk.Values {
 
 		#region ValueContainer implementation
 
-		public override List<string> GetKeys ()
+		public List<string> GetKeys ()
 		{
 			return valueContainer.GetKeys ();
 		}
 
-		public override Value Get (string key)
+		public Value Get (string key)
 		{
 			return valueContainer.Get (key);
+		}
+
+		public string Name {
+			get {
+				return gameObject.name;
+			}
 		}
 
 		#endregion
