@@ -6,8 +6,6 @@ public class InjectorAsset : ScriptableObject {
 
 	// custom Injection system...
 
-	// objeto en pantalla registrado por tipo o por nombre
-
 //	public InjectorBindings bindings;
 	InjectorBindings _bindings;
 

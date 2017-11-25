@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class BehaviourToInject : InectedBehaviour {
+public class BehaviourToInject : InjectableBehaviour {
 
 	// [Inject]
 	protected IMegaSystem megaSystem;

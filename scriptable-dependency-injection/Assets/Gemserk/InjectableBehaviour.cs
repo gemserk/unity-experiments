@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class InectedBehaviour : MonoBehaviour
+public class InjectableBehaviour : MonoBehaviour
 {
 	public InjectorAsset injector;
 
