@@ -246,7 +246,7 @@ MonoBehaviour:
     sourceType: 0
     container: {fileID: 1902505785}
   b:
-    key: Speed
+    key: MegaValue
     sourceType: 1
     container: {fileID: 1679381584}
 --- !u!4 &670718850

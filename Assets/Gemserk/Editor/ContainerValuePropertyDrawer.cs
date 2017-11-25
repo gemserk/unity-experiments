@@ -67,8 +67,13 @@ public class ContainerValuePropertyDrawer : PropertyDrawer
 
 			EditorGUI.BeginDisabledGroup (true);
 			if (!string.IsNullOrEmpty (keyProperty.stringValue)) {
-				// check types ...
-				EditorGUI.FloatField (valueRect, valueContainer.Get (keyProperty.stringValue).GetFloat ());
+				var value = valueContainer.Get (keyProperty.stringValue);
+
+				// just in case the key is available but the value not set yet (is set in runtime)...
+				if (value != null) {
+					// check types ...
+					EditorGUI.FloatField (valueRect, valueContainer.Get (keyProperty.stringValue).GetFloat ());
+				}
 			}
 			EditorGUI.EndDisabledGroup ();
 
