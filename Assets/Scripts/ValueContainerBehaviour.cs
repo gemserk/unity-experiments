@@ -60,6 +60,8 @@ namespace Gemserk.Values {
 	// el tema es manejar bien el contenedor/indice y que el editor sea eficiente.
 	// - soportar rename de un contenedor sin problemas
 	// - el global pierde sentido, todos pasan a ser global
+	// - test: dos contenedores se llaman igual
 
-	// preview de valor actual en el que muestra el la variable (consumidor)
+	// en el consumer no se los nombres de variable local
+
 }

@@ -65,28 +65,31 @@ public class ContainerValuePropertyDrawer : PropertyDrawer
 					keyProperty.stringValue = options [newSelection];
 			}
 
-			EditorGUI.BeginDisabledGroup (true);
 			if (!string.IsNullOrEmpty (keyProperty.stringValue)) {
-				var value = valueContainer.Get (keyProperty.stringValue);
-
-				// just in case the key is available but the value not set yet (is set in runtime)...
-				if (value != null) {
-					// check types ...
-					if (value.ValueType == ValueType.Number) {
-						EditorGUI.FloatField (valueRect, valueContainer.Get (keyProperty.stringValue).GetFloat ());
-					} else if (value.ValueType == ValueType.Object) {
-						var valueObject = value.Get<object> ();
-						if (valueObject is UnityEngine.Object) {
-							EditorGUI.ObjectField (valueRect, valueObject as UnityEngine.Object, typeof(UnityEngine.Object), true);
-						}
-					}
-				}
+				DrawValuePreview (valueRect, valueContainer.Get(keyProperty.stringValue));
 			}
-			EditorGUI.EndDisabledGroup ();
 
 		}
 
 		EditorGUI.EndProperty ();
+	}
+
+	void DrawValuePreview(Rect valueRect, Value value)
+	{
+		EditorGUI.BeginDisabledGroup (true);
+		// just in case the key is available but the value not set yet (is set in runtime)...
+		if (value != null) {
+			// check types ...
+			if (value.ValueType == ValueType.Number) {
+				EditorGUI.FloatField (valueRect, value.GetFloat ());
+			} else if (value.ValueType == ValueType.Object) {
+				var valueObject = value.Get<object> ();
+				if (valueObject is UnityEngine.Object) {
+					EditorGUI.ObjectField (valueRect, valueObject as UnityEngine.Object, typeof(UnityEngine.Object), true);
+				}
+			}
+		}
+		EditorGUI.EndDisabledGroup ();
 	}
 
 	public override float GetPropertyHeight (SerializedProperty property, GUIContent label)
