@@ -23,25 +23,41 @@ public class ValueContainerCustomInspector : Editor {
 			var valueEntry = iterator.Current as SerializedProperty;
 
 			var nameProperty = valueEntry.FindPropertyRelative ("name");
+			var valueProperty = valueEntry.FindPropertyRelative ("value");
+
+			var emptyName = string.IsNullOrEmpty (nameProperty.stringValue);
+
+			EditorGUILayout.BeginHorizontal ();
 			nameProperty.stringValue = EditorGUILayout.TextField (nameProperty.stringValue);
 
-			var valueProperty = valueEntry.FindPropertyRelative ("value");
-			EditorGUILayout.PropertyField (valueProperty, true);
-		
 			if (GUILayout.Button ("Remove")) {
 				entryToRemove = current;
 			}
+			EditorGUILayout.EndHorizontal();
 
+			if (!emptyName) {
+				EditorGUILayout.PropertyField (valueProperty, true);
+			}
+	
 			current++;
-		}
 
+			if (emptyName) {
+				EditorGUILayout.HelpBox("Name is empty!", MessageType.Warning);
+			}
+		}
+	
 		if (entryToRemove >= 0) {
-			container.values.RemoveAt (entryToRemove);
+			if (EditorUtility.DisplayDialog ("Warning", "Are sure to remove value?", "Yes", "Cancel")) {
+				container.values.RemoveAt (entryToRemove);
+			}
 		}
 
 		if (GUILayout.Button ("Add")) {
 			container.values.Add (new ValueContainerBehaviour.ValueDefinitionEntry ());
 		}
+
+		serializedObject.ApplyModifiedProperties ();
+		EditorUtility.SetDirty (target);
 	}
 		
 }

@@ -199,11 +199,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   values:
-  - name: REFINERIES_COUNT1
-    value:
-      type: 0
-      number: 150
-      reference: {fileID: 0}
   - name: REFINERIES_COUNT2
     value:
       type: 1
@@ -213,6 +208,11 @@ MonoBehaviour:
     value:
       type: 0
       number: 111
+      reference: {fileID: 0}
+  - name: asdass
+    value:
+      type: 0
+      number: 0
       reference: {fileID: 0}
 --- !u!1 &670718848
 GameObject:
@@ -417,11 +417,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   values:
-  - name: GLOBAL_TOTAL
+  - name: s
     value:
       type: 0
-      number: 22231
+      number: 0
       reference: {fileID: 0}
+  - name: SUPER_VALUE
+    value:
+      type: 1
+      number: 0
+      reference: {fileID: 2070599862}
 --- !u!4 &1902505786
 Transform:
   m_ObjectHideFlags: 0
@@ -465,7 +470,7 @@ MonoBehaviour:
   value:
     key: REFINERIES_COUNT2
     sourceType: 0
-    container: {fileID: 400965848}
+    container: {fileID: 1902505785}
   definition:
     type: 1
     number: 0
