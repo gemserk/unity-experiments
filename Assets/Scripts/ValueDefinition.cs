@@ -5,11 +5,7 @@ namespace Gemserk.Values {
 	[Serializable]
 	public class ValueDefinition : Value {
 
-		public static int NUMBER_TYPE = 0;
-		public static int OBJECT_TYPE = 1;
-
-		// used by editor
-		public int type;
+		public ValueType valueType;
 
 		public float number;
 		public UnityEngine.Object reference;
@@ -27,30 +23,27 @@ namespace Gemserk.Values {
 
 		public void SetFloat (float f)
 		{
-			type = ValueDefinition.NUMBER_TYPE;
+			valueType = ValueType.Number;
 			number = f;
 		}
 
 		public void Set<T> (T t) where T : class
 		{
-			type = ValueDefinition.OBJECT_TYPE;
+			valueType = ValueType.Object;
 			reference = t as UnityEngine.Object;
 		}
 
 		public ValueType ValueType {
 			get {
-				if (type == NUMBER_TYPE) {
-					return ValueType.Number;
-				} 
-				return ValueType.Object;
+				return valueType;
 			}
 		}
 
 		public void Override (Value value)
 		{
-			if (type == ValueDefinition.NUMBER_TYPE)
+			if (ValueType == ValueType.Number)
 				value.SetFloat (GetFloat ());
-			else if (type == ValueDefinition.OBJECT_TYPE)
+			else if (ValueType == ValueType.Object)
 				value.Set<object>(Get<object>());
 		}
 

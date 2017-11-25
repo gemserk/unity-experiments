@@ -14,9 +14,11 @@ public class ValueDefinitionPropertyDrawer : PropertyDrawer
 	{
 		var maxWidth = position.width;
 
+//		var valueDefinition = fieldInfo.GetValue () as ValueDefinition;
+
 		var numberValueProperty = property.FindPropertyRelative ("number");
 		var objectValueProperty = property.FindPropertyRelative ("reference");
-		var typeProperty = property.FindPropertyRelative ("type");
+		var typeProperty = property.FindPropertyRelative ("valueType");
 
 		EditorGUI.BeginProperty (position, label, property);
 
@@ -28,10 +30,14 @@ public class ValueDefinitionPropertyDrawer : PropertyDrawer
 			"Object", 
 		});
 
-		if (typeProperty.intValue == ValueDefinition.NUMBER_TYPE) {
+		var valueType = (ValueType) typeProperty.enumValueIndex;
+
+		if (valueType == ValueType.Number) {
 			numberValueProperty.floatValue = EditorGUI.FloatField (valueRect, numberValueProperty.floatValue);
 			objectValueProperty.objectReferenceValue = null;
-		} else if (typeProperty.intValue == ValueDefinition.OBJECT_TYPE) {
+
+
+		} else if (valueType == ValueType.Object) {
 			numberValueProperty.floatValue = 0;
 			objectValueProperty.objectReferenceValue = 
 				EditorGUI.ObjectField (valueRect, objectValueProperty.objectReferenceValue, typeof(UnityEngine.Object), true);

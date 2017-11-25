@@ -142,7 +142,7 @@ MonoBehaviour:
   values:
   - name: easdas
     value:
-      type: 0
+      valueType: 0
       number: 0
       reference: {fileID: 0}
 --- !u!4 &400965849
@@ -201,17 +201,17 @@ MonoBehaviour:
   values:
   - name: REFINERIES_COUNT2
     value:
-      type: 1
+      valueType: 1
       number: 0
-      reference: {fileID: 670718848}
+      reference: {fileID: 1679381583}
   - name: REFINERIES_COUNT4
     value:
-      type: 0
+      valueType: 0
       number: 111
       reference: {fileID: 0}
   - name: asdass
     value:
-      type: 0
+      valueType: 0
       number: 0
       reference: {fileID: 0}
 --- !u!1 &670718848
@@ -290,12 +290,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   values:
-  - key: SUPER_VALUE
+  - key: MEGA_OBJECT
     sourceType: 0
     container: {fileID: 1902505785}
-  - key: REFINERIES_COUNT4
-    sourceType: 1
-    container: {fileID: 482414279}
 --- !u!4 &1235496001
 Transform:
   m_ObjectHideFlags: 0
@@ -459,24 +456,24 @@ MonoBehaviour:
   values:
   - name: s
     value:
-      type: 0
+      valueType: 0
       number: 390
       reference: {fileID: 0}
   - name: SUPER_VALUE
     value:
-      type: 0
+      valueType: 0
       number: 150
       reference: {fileID: 0}
   - name: MEGA_OBJECT
     value:
-      type: 1
-      number: 0
-      reference: {fileID: 11500000, guid: 2a567bf050691d34b9e99056d3ab2b8d, type: 3}
-  - name: CAMERA
-    value:
-      type: 1
+      valueType: 1
       number: 0
       reference: {fileID: 1544598889}
+  - name: CAMERA
+    value:
+      valueType: 1
+      number: 0
+      reference: {fileID: 482414277}
 --- !u!4 &1902505786
 Transform:
   m_ObjectHideFlags: 0
@@ -522,7 +519,7 @@ MonoBehaviour:
     sourceType: 0
     container: {fileID: 1902505785}
   definition:
-    type: 1
+    valueType: 0
     number: 0
     reference: {fileID: 670718848}
   setValue: 0
