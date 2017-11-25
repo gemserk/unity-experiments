@@ -3,7 +3,7 @@ using System;
 namespace Gemserk.Values
 {
 	[SerializableAttribute]
-	public class UnityContainerValue : ContainerValue
+	public class ContainerValueBase : ContainerValue
 	{
 		public enum SourceType {
 			Global, 
@@ -11,7 +11,7 @@ namespace Gemserk.Values
 		}
 
 		public SourceType sourceType;
-		public ValueContainerBehaviour container;
+		public ValueContainerBase container;
 
 		protected override ValueContainer Container {
 			get {

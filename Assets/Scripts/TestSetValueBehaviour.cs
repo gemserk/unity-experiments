@@ -3,7 +3,7 @@ using Gemserk.Values;
 
 public class TestSetValueBehaviour : MonoBehaviour {
 
-	public Gemserk.Values.UnityContainerValue value;
+	public Gemserk.Values.ContainerValueBase value;
 
 	public ValueDefinition definition;
 

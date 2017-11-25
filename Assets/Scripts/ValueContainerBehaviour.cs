@@ -1,10 +1,10 @@
-﻿using UnityEngine;
-using System;
+﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 
 namespace Gemserk.Values {
 
-	public class ValueContainerBehaviour : MonoBehaviour, ValueContainer {
+	public class ValueContainerBehaviour : ValueContainerBase {
 
 		[Serializable]
 		public class ValueDefinitionEntry
@@ -22,7 +22,12 @@ namespace Gemserk.Values {
 
 		#region ValueContainer implementation
 
-		public Value Get (string key)
+		public override List<string> GetKeys ()
+		{
+			return values.Select (v => v.name).ToList ();
+		}
+
+		public override Value Get (string key)
 		{
 			foreach (var v in values) {
 				if (v.name.Equals (key)) {
@@ -38,7 +43,7 @@ namespace Gemserk.Values {
 		// TODO: cache values?
 	}
 
-	// Cambiar valores en editor deberían cambiar en memoria
+	// Editable en runtime desde editor
 
 	// Fácil de referenciar valores de otras clases
 
@@ -49,8 +54,12 @@ namespace Gemserk.Values {
 	// Fácil de configurar usar una variable, no quiero tener que seleccionar el contenedor cada vez
 	// Contenedor global de variables por defecto. GLOBAL / LOCAL
 
-	// Sin redundancia, para aumentar claridad
+	// diferentes contenedores
 
-	// Undo!!
+	// pasar a github
 
+	// el value consumer podría directamente listar toda la lista de variables en todo el sistema
+	// el tema es manejar bien el contenedor/indice y que el editor sea eficiente.
+	// - soportar rename de un contenedor sin problemas
+	// - el global pierde sentido, todos pasan a ser global
 }

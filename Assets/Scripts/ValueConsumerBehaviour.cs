@@ -2,7 +2,7 @@
 
 public class ValueConsumerBehaviour : MonoBehaviour {
 
-	public Gemserk.Values.UnityContainerValue[] values;
+	public Gemserk.Values.ContainerValueBase[] values;
 
 	void Update() {
 		if (Input.GetKeyUp(KeyCode.Alpha1)) {
