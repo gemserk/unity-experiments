@@ -8,8 +8,6 @@ public class ContainerValuePropertyDrawer : PropertyDrawer
 {
 	const float propertyHeight = 16;
 
-	const int totalFields = 2;
-
 	// Draw the property inside the given rect
 	public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
 	{
@@ -58,6 +56,15 @@ public class ContainerValuePropertyDrawer : PropertyDrawer
 
 	public override float GetPropertyHeight (SerializedProperty property, GUIContent label)
 	{
+		int totalFields = 1;
+
+		var containerProperty = property.FindPropertyRelative ("container");
+		var valueContainer = containerProperty.objectReferenceValue as ValueContainerBehaviour;
+
+		if (valueContainer != null) {
+			totalFields = 2;
+		}
+
 		return propertyHeight * totalFields;
 	}
 }

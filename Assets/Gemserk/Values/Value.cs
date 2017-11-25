@@ -3,7 +3,7 @@ namespace Gemserk.Values
 {
 	public interface Value {
 
-		int GetInt();
+//		int GetInt();
 
 		float GetFloat();
 

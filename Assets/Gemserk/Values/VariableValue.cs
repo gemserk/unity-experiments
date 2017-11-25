@@ -14,10 +14,10 @@ namespace Gemserk.Values
 
 		#region Value implementation
 
-		public int GetInt ()
-		{
-			return (int) _value;
-		}
+//		public int GetInt ()
+//		{
+//			return (int) _value;
+//		}
 
 		public float GetFloat ()
 		{

@@ -200,16 +200,62 @@ MonoBehaviour:
   values:
   - name: REFINERIES_COUNT1
     type: 0
-    number: 56423.246
+    number: 5
     reference: {fileID: 0}
   - name: REFINERIES_COUNT2
     type: 0
-    number: 1
+    number: 2
     reference: {fileID: 0}
   - name: REFINERIES_COUNT4
     type: 0
     number: 1
     reference: {fileID: 0}
+--- !u!1 &670718848
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 670718850}
+  - component: {fileID: 670718849}
+  m_Layer: 0
+  m_Name: ComparisonTest
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &670718849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 670718848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 113da9de47a9a9c4fb0dc05a529de3c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  a:
+    key: REFINERIES_COUNT2
+    container: {fileID: 482414279}
+  b:
+    key: REFINERIES_COUNT4
+    container: {fileID: 482414279}
+--- !u!4 &670718850
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 670718848}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1235495999
 GameObject:
   m_ObjectHideFlags: 0
@@ -237,12 +283,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b50269fe18b41104182bf5185a3e2224, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myValue:
-    key: REFINERIES_COUNT1
+  values:
+  - key: 
     container: {fileID: 482414279}
-  myValue2:
-    key: easdas
-    container: {fileID: 400965848}
+  - key: 
+    container: {fileID: 0}
 --- !u!4 &1235496001
 Transform:
   m_ObjectHideFlags: 0

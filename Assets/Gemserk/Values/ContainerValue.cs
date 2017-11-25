@@ -11,10 +11,10 @@ namespace Gemserk.Values
 
 		#region Value implementation
 
-		public int GetInt ()
-		{
-			return Container.Get(key).GetInt();
-		}
+//		public int GetInt ()
+//		{
+//			return Container.Get(key).GetInt();
+//		}
 
 		public float GetFloat ()
 		{
