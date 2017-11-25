@@ -11,9 +11,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4401609267a196947a59a954f264baad, type: 3}
   m_Name: Stage1Constants
   m_EditorClassIdentifier: 
-  values:
-  - name: PIPOTE
-    value:
-      valueType: 0
-      number: 15555
-      reference: {fileID: 0}
+  valueContainer:
+    name: 
+    values:
+    - name: asdsa
+      value:
+        valueType: 1
+        number: 0
+        reference: {fileID: 11500000, guid: b50269fe18b41104182bf5185a3e2224, type: 3}

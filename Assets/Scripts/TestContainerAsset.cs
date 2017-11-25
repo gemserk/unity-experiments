@@ -21,7 +21,7 @@ public class TestContainerAsset : ScriptableObject, ValueContainer {
 
 	public string Name {
 		get {
-			return valueContainer.name;
+			return name;
 		}
 	}
 
