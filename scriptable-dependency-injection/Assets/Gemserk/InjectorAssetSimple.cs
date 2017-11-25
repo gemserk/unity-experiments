@@ -1,32 +1,34 @@
 using UnityEngine;
 using System;
 
-[CreateAssetMenu(menuName="Gemserk/Injector Simple")]
-public class InjectorAssetSimple : InjectorAsset
+namespace Gemserk.Injector
 {
-	// custom Injection system...
-
-	// multiple bindings (from different configurations)
-
-	// binding configurations from assets too
-
-	InjectorBindings _bindings;
-
-	public override void SetBindings(InjectorBindings bindings) {
-		_bindings = bindings;
-	}
-
-	public override void Inject (UnityEngine.Object o) 
+	[CreateAssetMenu(menuName="Gemserk/Injector Simple")]
+	public class InjectorAssetSimple : InjectorAsset
 	{
-		var t = o.GetType ();
-		//		t.GetField(
+		// multiple bindings (from different configurations)
+		// who is in charge of calling the auto inject? (behaviour order probably)
 
-		foreach (var binding in _bindings.bindings) {
-			var field = t.GetField (binding.name, System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
-			if (field != null) {
-				field.SetValue (o, binding.target);
+		// binding configurations from assets too
+
+		InjectorBindings _bindings;
+
+		public override void SetBindings(InjectorBindings bindings) {
+			_bindings = bindings;
+		}
+
+		public override void Inject (UnityEngine.Object o) 
+		{
+			var t = o.GetType ();
+			//		t.GetField(
+
+			foreach (var binding in _bindings.bindings) {
+				var field = t.GetField (binding.name, System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+				if (field != null) {
+					field.SetValue (o, binding.target);
+				}
 			}
 		}
+
 	}
-	
 }

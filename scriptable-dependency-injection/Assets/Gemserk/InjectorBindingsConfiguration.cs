@@ -1,16 +1,19 @@
 using UnityEngine;
 
-public class InjectorBindingsConfiguration : MonoBehaviour
+namespace Gemserk.Injector
 {
-	public InjectorBindings bindings;
-	public InjectorAsset injector;
-
-	void Awake()
+	public class InjectorBindingsConfiguration : MonoBehaviour
 	{
-		injector.SetBindings (bindings);
-		var injectables = FindObjectsOfType<InjectableBehaviour> ();
-		foreach (var injectable in injectables) {
-			injector.Inject (injectable);
+		public InjectorBindings bindings;
+		public InjectorAsset injector;
+
+		void Awake()
+		{
+			injector.SetBindings (bindings);
+			var injectables = FindObjectsOfType<InjectableBehaviour> ();
+			foreach (var injectable in injectables) {
+				injector.Inject (injectable);
+			}
 		}
 	}
 }

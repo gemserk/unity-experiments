@@ -1,6 +1,9 @@
 using UnityEngine;
 
-public class InjectableBehaviour : MonoBehaviour
+namespace Gemserk.Injector
 {
-	
+	public class InjectableBehaviour : MonoBehaviour
+	{
+
+	}
 }

@@ -1,9 +1,14 @@
 ﻿using UnityEngine;
 
-public abstract class InjectorAsset : ScriptableObject {
+namespace Gemserk.Injector
+{
+	public abstract class InjectorAsset : ScriptableObject {
 
-	public abstract void SetBindings(InjectorBindings bindings);
+		// this one could be implemented to have other injector implementations
 
-	public abstract void Inject (UnityEngine.Object o);
+		public abstract void SetBindings(InjectorBindings bindings);
 
+		public abstract void Inject (UnityEngine.Object o);
+
+	}
 }
