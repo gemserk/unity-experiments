@@ -47,6 +47,10 @@ namespace Gemserk.Values {
 	// Tener un contenedor por defecto si no hay ninguno especificado?
 
 	// Fácil de configurar usar una variable, no quiero tener que seleccionar el contenedor cada vez
-	// Contenedor global de variables por defecto. GLOBAL / SPECIFIC
+	// Contenedor global de variables por defecto. GLOBAL / LOCAL
+
+	// Sin redundancia, para aumentar claridad
+
+	// Undo!!
 
 }
