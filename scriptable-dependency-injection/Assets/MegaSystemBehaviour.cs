@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using Gemserk.Injector;
 
 public class MegaSystemBehaviour : MonoBehaviour, IMegaSystem {
 

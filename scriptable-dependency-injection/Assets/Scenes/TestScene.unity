@@ -122,7 +122,7 @@ GameObject:
   - component: {fileID: 667425825}
   - component: {fileID: 667425824}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: ManuallyInjectedObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -139,6 +139,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6553598f04197fe4a9341ffed061c889, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  megaSystem1:
+    reference: {fileID: 11400000, guid: 829ae12be825521439244651991e5f16, type: 2}
   injector: {fileID: 11400000, guid: 4be6c62f621a43f47a4d1658b758dbce, type: 2}
 --- !u!4 &667425825
 Transform:

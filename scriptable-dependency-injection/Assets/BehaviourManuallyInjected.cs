@@ -1,10 +1,19 @@
 using UnityEngine;
 using Gemserk.Injector;
+using System;
+
+[Serializable]
+public class InterfaceObjectMegaSystem : InterfaceObject<IMegaSystem>
+{
+	
+}
 
 public class BehaviourManuallyInjected : MonoBehaviour {
 
 	// [Inject]
 	protected IMegaSystem megaSystem2;
+
+	public InterfaceObjectMegaSystem megaSystem1;
 
 	public InjectorAsset injector;
 
@@ -12,6 +21,7 @@ public class BehaviourManuallyInjected : MonoBehaviour {
 	void Start () {
 		injector.Inject (this);
 		Debug.Log ("SuperValue: " + megaSystem2.GetSuperValue());
+		Debug.Log ("SuperValue: " + megaSystem1.i.GetSuperValue());
 	}
 
 }

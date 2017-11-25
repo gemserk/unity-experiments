@@ -12,4 +12,5 @@ namespace Gemserk.Injector
 		public UnityEngine.Object target;
 
 	}
+
 }
