@@ -8,19 +8,32 @@ public class ContainerValuePropertyDrawer : PropertyDrawer
 {
 	const float propertyHeight = 16;
 
-	// Draw the property inside the given rect
 	public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
 	{
+		var sourceType = property.FindPropertyRelative ("sourceType");
 		var containerProperty = property.FindPropertyRelative ("container");
 		var keyProperty = property.FindPropertyRelative ("key");
 
-		EditorGUI.BeginProperty (position, label, property);
-
 		var maxWidth = position.width;
 
-		var containerRect = new Rect(position.x, position.y + propertyHeight * 0, maxWidth, propertyHeight);
+		EditorGUI.BeginProperty (position, label, property);
 
+		var sourceRect = new Rect(position.x + maxWidth * 0.75f, position.y + propertyHeight * 0, maxWidth * 0.25f, propertyHeight);
+
+		sourceType.enumValueIndex = (int) ((UnityContainerValue.SourceType) EditorGUI.EnumPopup (sourceRect, (UnityContainerValue.SourceType) sourceType.enumValueIndex));
+
+		bool containerReadonly = false;
+
+		if (sourceType.enumValueIndex == (int)UnityContainerValue.SourceType.Global) {
+			containerProperty.objectReferenceValue = GameObject.FindObjectOfType<GlobalValueContainerBehaviour> ();
+			containerReadonly = true;
+		}
+
+		var containerRect = new Rect(position.x, position.y + propertyHeight * 0, maxWidth * 0.75f, propertyHeight);
+
+		EditorGUI.BeginDisabledGroup (containerReadonly);
 		containerProperty.objectReferenceValue = EditorGUI.ObjectField (containerRect, containerProperty.objectReferenceValue, typeof(ValueContainerBehaviour), true);
+		EditorGUI.EndDisabledGroup ();
 
 		var valueContainer = containerProperty.objectReferenceValue as ValueContainerBehaviour;
 
@@ -28,25 +41,21 @@ public class ContainerValuePropertyDrawer : PropertyDrawer
 
 		if (valueContainer != null) {
 
-			if (valueContainer.values.Count == 0) {
-				EditorGUI.LabelField (keyRect, "Empty Container");
-			} else {
-				var options = valueContainer.values.Select (v => v.name).ToList ();
-				options.Add ("None");
+			var options = valueContainer.values.Select (v => v.name).ToList ();
+			options.Add ("None");
 
-				int currentSelection = options.IndexOf (keyProperty.stringValue);
+			int currentSelection = options.IndexOf (keyProperty.stringValue);
 
-				if (currentSelection == -1)
-					currentSelection = options.Count - 1;
+			if (currentSelection == -1)
+				currentSelection = options.Count - 1;
 
-				int newSelection = EditorGUI.Popup(keyRect, currentSelection, options.ToArray());
+			int newSelection = EditorGUI.Popup(keyRect, currentSelection, options.ToArray());
 
-				if (newSelection != currentSelection) {
-					if (newSelection == options.Count - 1)
-						keyProperty.stringValue = "";
-					else
-						keyProperty.stringValue = options [newSelection];
-				}
+			if (newSelection != currentSelection) {
+				if (newSelection == options.Count - 1)
+					keyProperty.stringValue = "";
+				else
+					keyProperty.stringValue = options [newSelection];
 			}
 
 		}

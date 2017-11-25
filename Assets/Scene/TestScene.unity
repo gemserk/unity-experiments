@@ -206,9 +206,9 @@ MonoBehaviour:
       reference: {fileID: 0}
   - name: REFINERIES_COUNT2
     value:
-      type: 0
+      type: 1
       number: 0
-      reference: {fileID: 0}
+      reference: {fileID: 670718848}
   - name: REFINERIES_COUNT4
     value:
       type: 0
@@ -243,9 +243,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   a:
     key: REFINERIES_COUNT2
+    sourceType: 0
     container: {fileID: 482414279}
   b:
     key: REFINERIES_COUNT4
+    sourceType: 0
     container: {fileID: 482414279}
 --- !u!4 &670718850
 Transform:
@@ -288,10 +290,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   values:
-  - key: REFINERIES_COUNT4
-    container: {fileID: 482414279}
+  - key: GLOBAL_TOTAL
+    sourceType: 0
+    container: {fileID: 1902505785}
   - key: easdas
-    container: {fileID: 400965848}
+    sourceType: 1
+    container: {fileID: 482414279}
 --- !u!4 &1235496001
 Transform:
   m_ObjectHideFlags: 0
@@ -385,6 +389,52 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1902505784
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1902505786}
+  - component: {fileID: 1902505785}
+  m_Layer: 0
+  m_Name: GlobalVariables
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1902505785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1902505784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7eeb53e7d6849d44ba0205e8359b9175, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  values:
+  - name: GLOBAL_TOTAL
+    value:
+      type: 0
+      number: 22231
+      reference: {fileID: 0}
+--- !u!4 &1902505786
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1902505784}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2070599862
 GameObject:
   m_ObjectHideFlags: 0
@@ -414,7 +464,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   value:
     key: REFINERIES_COUNT2
-    container: {fileID: 482414279}
+    sourceType: 0
+    container: {fileID: 400965848}
   definition:
     type: 1
     number: 0

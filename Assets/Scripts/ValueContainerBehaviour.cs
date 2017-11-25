@@ -4,15 +4,6 @@ using System.Collections.Generic;
 
 namespace Gemserk.Values {
 
-//	public enum ValueDefinitionType {
-//		Constant,
-//		Variable
-//		Number,
-//		Object
-//	}
-
-	// property drawer to select the inner value: int, float, string
-
 	public class ValueContainerBehaviour : MonoBehaviour, ValueContainer {
 
 		[Serializable]
@@ -46,5 +37,16 @@ namespace Gemserk.Values {
 
 		// TODO: cache values?
 	}
+
+	// Cambiar valores en editor deberían cambiar en memoria
+
+	// Fácil de referenciar valores de otras clases
+
+	// Fácil de leer en editor
+
+	// Tener un contenedor por defecto si no hay ninguno especificado?
+
+	// Fácil de configurar usar una variable, no quiero tener que seleccionar el contenedor cada vez
+	// Contenedor global de variables por defecto. GLOBAL / SPECIFIC
 
 }
