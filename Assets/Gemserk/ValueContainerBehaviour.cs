@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace Gemserk.Values {
 
 	public enum ValueDefinitionType {
-		Constant,
+//		Constant,
 		Variable
 	}
 
@@ -16,7 +16,7 @@ namespace Gemserk.Values {
 
 		public string name;
 
-		public ValueDefinitionType type = ValueDefinitionType.Variable;
+//		public ValueDefinitionType type = ValueDefinitionType.Variable;
 
 		public float number;
 
@@ -27,7 +27,7 @@ namespace Gemserk.Values {
 
 	public class ValueContainerBehaviour : MonoBehaviour, ValueContainer {
 
-		public ValueDefinition valueDefinitionTest;
+//		public ValueDefinition valueDefinitionTest;
 
 		public List<ValueDefinition> values = new List<ValueDefinition>();
 
@@ -50,11 +50,14 @@ namespace Gemserk.Values {
 			}
 
 			if (valueDefinition != null) {
-				if (valueDefinition.type == ValueDefinitionType.Constant) {
-					return new ConstantValue ();
-				} else if (valueDefinition.type == ValueDefinitionType.Variable) {
-					return new VariableValue ();
-				}
+
+				return new VariableValue (valueDefinition.number);
+
+//				if (valueDefinition.type == ValueDefinitionType.Constant) {
+//					return new ConstantValue ();
+//				} else if (valueDefinition.type == ValueDefinitionType.Variable) {
+//					return new VariableValue ();
+//				}
 			}
 
 			return null;
