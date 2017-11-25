@@ -246,7 +246,7 @@ MonoBehaviour:
     sourceType: 1
     container: {fileID: 1902505785}
   b:
-    key: MyValue2
+    key: Health
     sourceType: 1
     container: {fileID: 1679381584}
 --- !u!4 &670718850

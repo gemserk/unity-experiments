@@ -1,23 +1,31 @@
-using UnityEngine;
 using Gemserk.Values;
 
 namespace Gemserk.Values {
 
 	public class TestContainerCustom : ValueContainerBase {
-		
+
 		#region implemented abstract members of ValueContainerBase
+
+		readonly Value _health = new VariableValue(0, null);
+		readonly Value _speed = new VariableValue(10, null);
 
 		public override System.Collections.Generic.List<string> GetKeys ()
 		{
 			return new System.Collections.Generic.List<string> () {
-				{ "MyValue1" },
-				{ "MyValue2" },
+				{ "Health" },
+				{ "Speed" },
 			};
 		}
 
 		public override Value Get (string key)
 		{
-			throw new System.NotImplementedException ();
+			if (key.Equals ("Health"))
+				return _health;
+
+			if (key.Equals ("Speed"))
+				return _speed;
+			
+			return null;
 		}
 
 		#endregion

@@ -54,12 +54,12 @@ namespace Gemserk.Values {
 	// Fácil de configurar usar una variable, no quiero tener que seleccionar el contenedor cada vez
 	// Contenedor global de variables por defecto. GLOBAL / LOCAL
 
-	// diferentes contenedores
-
 	// pasar a github
 
 	// el value consumer podría directamente listar toda la lista de variables en todo el sistema
 	// el tema es manejar bien el contenedor/indice y que el editor sea eficiente.
 	// - soportar rename de un contenedor sin problemas
 	// - el global pierde sentido, todos pasan a ser global
+
+	// preview de valor actual en el que muestra el la variable (consumidor)
 }
