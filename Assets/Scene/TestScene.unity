@@ -202,7 +202,7 @@ MonoBehaviour:
   - name: REFINERIES_COUNT1
     value:
       type: 0
-      number: 0
+      number: 150
       reference: {fileID: 0}
   - name: REFINERIES_COUNT2
     value:
@@ -212,7 +212,7 @@ MonoBehaviour:
   - name: REFINERIES_COUNT4
     value:
       type: 0
-      number: 0
+      number: 111
       reference: {fileID: 0}
 --- !u!1 &670718848
 GameObject:
@@ -413,13 +413,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   value:
-    key: REFINERIES_COUNT1
+    key: REFINERIES_COUNT2
     container: {fileID: 482414279}
-  number: 150
   definition:
-    type: 0
+    type: 1
     number: 0
-    reference: {fileID: 0}
+    reference: {fileID: 670718848}
+  setValue: 0
 --- !u!4 &2070599864
 Transform:
   m_ObjectHideFlags: 0

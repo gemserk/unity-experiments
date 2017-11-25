@@ -5,19 +5,16 @@ public class TestSetValueBehaviour : MonoBehaviour {
 
 	public Gemserk.Values.UnityContainerValue value;
 
-	public int number;
-
 	public ValueDefinition definition;
 
-	void Start()
+	[InspectorButtonAttribute("OnConfigureValue")]
+	public bool setValue;
+
+	public void OnConfigureValue()
 	{
-		value.SetFloat(number);
+		definition.Override (value);
+//		value.SetFloat(definition.GetFloat());
 	}
-
-
-	// La value definition podría no tener que especificar el nombre
-
-	// La lista tiene nombre + value definition
-
+		
 	// Tengo que poder usar la value definition fuera de una lista (contenedor)
 }

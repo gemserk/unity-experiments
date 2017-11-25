@@ -7,7 +7,7 @@ public class ValueDefinitionPropertyDrawer : PropertyDrawer
 {
 	const float propertyHeight = 16;
 
-	const int totalFields = 2;
+	const int totalFields = 1;
 
 	// Draw the property inside the given rect
 	public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
@@ -28,10 +28,10 @@ public class ValueDefinitionPropertyDrawer : PropertyDrawer
 			"Object", 
 		});
 
-		if (typeProperty.intValue == 0) {
+		if (typeProperty.intValue == ValueDefinition.NUMBER_TYPE) {
 			numberValueProperty.floatValue = EditorGUI.FloatField (valueRect, numberValueProperty.floatValue);
 			objectValueProperty.objectReferenceValue = null;
-		} else if (typeProperty.intValue == 1) {
+		} else if (typeProperty.intValue == ValueDefinition.OBJECT_TYPE) {
 			numberValueProperty.floatValue = 0;
 			objectValueProperty.objectReferenceValue = 
 				EditorGUI.ObjectField (valueRect, objectValueProperty.objectReferenceValue, typeof(UnityEngine.Object), true);
