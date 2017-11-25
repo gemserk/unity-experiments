@@ -2,24 +2,11 @@ using System;
 
 namespace Gemserk.Values {
 
-//	public enum ValueDefinitionType {
-//		Constant,
-//		Variable
-//		Number,
-//		Object
-//	}
-
-	// property drawer to select the inner value: int, float, string
-
 	[Serializable]
 	public class ValueDefinition : Value {
 
 		public static int NUMBER_TYPE = 0;
 		public static int OBJECT_TYPE = 1;
-
-//		public string name;
-
-//		public ValueDefinitionType type = ValueDefinitionType.Variable;
 
 		// used by editor
 		public int type;
@@ -52,7 +39,10 @@ namespace Gemserk.Values {
 
 		public ValueType ValueType {
 			get {
-				throw new NotImplementedException ();
+				if (type == NUMBER_TYPE) {
+					return ValueType.Number;
+				} 
+				return ValueType.Object;
 			}
 		}
 

@@ -3,25 +3,28 @@ namespace Gemserk.Values
 {
 	public class VariableValue : Value {
 
-		float _value;
+		float _number;
 		object _object;
+
+		ValueType _valueType;
 
 		public VariableValue(float v, object o)
 		{
-			_value = v;
+			_number = v;
 			_object = o;
+
+			if (o != null) {
+				_valueType = ValueType.Object;
+			} else {
+				_valueType = ValueType.Number;
+			}
 		}
 
 		#region Value implementation
 
-//		public int GetInt ()
-//		{
-//			return (int) _value;
-//		}
-
 		public float GetFloat ()
 		{
-			return _value;
+			return _number;
 		}
 
 		public T Get<T>() where T : class
@@ -31,17 +34,21 @@ namespace Gemserk.Values
 
 		public void SetFloat (float f)
 		{
-			_value = f;
+			_number = f;
+			// lose reference, just in case...
+			_object = null;
+			_valueType = ValueType.Number;
 		}
 
 		public void Set<T> (T t) where T : class
 		{
 			_object = t;
+			_valueType = ValueType.Object;
 		}
 
 		public ValueType ValueType {
 			get {
-				throw new System.NotImplementedException ();
+				return _valueType;
 			}
 		}
 		#endregion

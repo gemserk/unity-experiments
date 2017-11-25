@@ -242,13 +242,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   a:
-    key: SUPER_VALUE
+    key: MEGA_OBJECT
     sourceType: 0
     container: {fileID: 1902505785}
   b:
-    key: MegaValue
-    sourceType: 1
-    container: {fileID: 1679381584}
+    key: CAMERA
+    sourceType: 0
+    container: {fileID: 1902505785}
 --- !u!4 &670718850
 Transform:
   m_ObjectHideFlags: 0
@@ -467,6 +467,16 @@ MonoBehaviour:
       type: 0
       number: 150
       reference: {fileID: 0}
+  - name: MEGA_OBJECT
+    value:
+      type: 1
+      number: 0
+      reference: {fileID: 11500000, guid: 2a567bf050691d34b9e99056d3ab2b8d, type: 3}
+  - name: CAMERA
+    value:
+      type: 1
+      number: 0
+      reference: {fileID: 1544598889}
 --- !u!4 &1902505786
 Transform:
   m_ObjectHideFlags: 0

@@ -17,11 +17,6 @@ namespace Gemserk.Values
 
 		#region Value implementation
 
-//		public int GetInt ()
-//		{
-//			return Container.Get(key).GetInt();
-//		}
-
 		public float GetFloat ()
 		{
 			return Value.GetFloat();

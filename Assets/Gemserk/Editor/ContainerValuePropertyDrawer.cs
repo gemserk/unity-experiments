@@ -72,7 +72,14 @@ public class ContainerValuePropertyDrawer : PropertyDrawer
 				// just in case the key is available but the value not set yet (is set in runtime)...
 				if (value != null) {
 					// check types ...
-					EditorGUI.FloatField (valueRect, valueContainer.Get (keyProperty.stringValue).GetFloat ());
+					if (value.ValueType == ValueType.Number) {
+						EditorGUI.FloatField (valueRect, valueContainer.Get (keyProperty.stringValue).GetFloat ());
+					} else if (value.ValueType == ValueType.Object) {
+						var valueObject = value.Get<object> ();
+						if (valueObject is UnityEngine.Object) {
+							EditorGUI.ObjectField (valueRect, valueObject as UnityEngine.Object, typeof(UnityEngine.Object), true);
+						}
+					}
 				}
 			}
 			EditorGUI.EndDisabledGroup ();

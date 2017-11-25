@@ -1,8 +1,9 @@
 
 namespace Gemserk.Values
 {
-	public interface ValueType {
-		
+	public enum ValueType {
+		Number,
+		Object
 	}
 
 }
