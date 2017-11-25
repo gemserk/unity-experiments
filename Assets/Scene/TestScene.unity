@@ -243,10 +243,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   a:
     key: SUPER_VALUE
-    sourceType: 1
+    sourceType: 0
     container: {fileID: 1902505785}
   b:
-    key: Health
+    key: Speed
     sourceType: 1
     container: {fileID: 1679381584}
 --- !u!4 &670718850
@@ -460,13 +460,13 @@ MonoBehaviour:
   - name: s
     value:
       type: 0
-      number: 0
+      number: 390
       reference: {fileID: 0}
   - name: SUPER_VALUE
     value:
-      type: 1
-      number: 0
-      reference: {fileID: 2070599862}
+      type: 0
+      number: 150
+      reference: {fileID: 0}
 --- !u!4 &1902505786
 Transform:
   m_ObjectHideFlags: 0

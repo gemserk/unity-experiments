@@ -41,12 +41,11 @@ public class ContainerValuePropertyDrawer : PropertyDrawer
 
 		var valueContainer = containerProperty.objectReferenceValue as ValueContainer;
 
-		var keyRect = new Rect(position.x, position.y + propertyHeight * 1, maxWidth, propertyHeight);
+		var keyRect = new Rect(position.x, position.y + propertyHeight * 1, maxWidth * 0.5f, propertyHeight);
+		var valueRect = new Rect(position.x + maxWidth * 0.5f, position.y + propertyHeight * 1, maxWidth * 0.5f, propertyHeight);
 
 		if (valueContainer != null) {
 			var options = valueContainer.GetKeys ();
-
-//			var options = values.Select (v => v.name).ToList ();
 
 			int currentSelection = options.IndexOf (keyProperty.stringValue);
 
@@ -65,6 +64,13 @@ public class ContainerValuePropertyDrawer : PropertyDrawer
 				else
 					keyProperty.stringValue = options [newSelection];
 			}
+
+			EditorGUI.BeginDisabledGroup (true);
+			if (!string.IsNullOrEmpty (keyProperty.stringValue)) {
+				// check types ...
+				EditorGUI.FloatField (valueRect, valueContainer.Get (keyProperty.stringValue).GetFloat ());
+			}
+			EditorGUI.EndDisabledGroup ();
 
 		}
 
