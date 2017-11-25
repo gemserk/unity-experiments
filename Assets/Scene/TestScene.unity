@@ -139,12 +139,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a8ff94bac829b045b4d06612d525c96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  values:
-  - name: easdas
-    value:
-      valueType: 0
-      number: 0
-      reference: {fileID: 0}
+  valueContainer:
+    name: 
+    values: []
 --- !u!4 &400965849
 Transform:
   m_ObjectHideFlags: 0
@@ -198,22 +195,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a8ff94bac829b045b4d06612d525c96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  values:
-  - name: REFINERIES_COUNT2
-    value:
-      valueType: 1
-      number: 0
-      reference: {fileID: 1679381583}
-  - name: REFINERIES_COUNT4
-    value:
-      valueType: 0
-      number: 111
-      reference: {fileID: 0}
-  - name: asdass
-    value:
-      valueType: 0
-      number: 0
-      reference: {fileID: 0}
+  valueContainer:
+    name: 
+    values: []
 --- !u!1 &670718848
 GameObject:
   m_ObjectHideFlags: 0
@@ -242,11 +226,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myMegaValue:
-    key: PIPOTE
-    sourceType: 1
-    container: {fileID: 11400000, guid: 0fa6d5e4e9937a14caf308a4c7b38578, type: 2}
+    key: MegaNumber
+    sourceType: 0
+    container: {fileID: 1902505785}
   myOtherValue:
-    key: s
+    key: MyObject
     sourceType: 0
     container: {fileID: 1902505785}
 --- !u!4 &670718850
@@ -453,27 +437,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7eeb53e7d6849d44ba0205e8359b9175, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  values:
-  - name: s
-    value:
-      valueType: 0
-      number: 390
-      reference: {fileID: 0}
-  - name: SUPER_VALUE
-    value:
-      valueType: 0
-      number: 150
-      reference: {fileID: 0}
-  - name: MEGA_OBJECT
-    value:
-      valueType: 1
-      number: 0
-      reference: {fileID: 1544598889}
-  - name: CAMERA
-    value:
-      valueType: 1
-      number: 0
-      reference: {fileID: 482414277}
+  valueContainer:
+    name: 
+    values:
+    - name: MegaNumber
+      value:
+        valueType: 0
+        number: 52512
+        reference: {fileID: 0}
+    - name: MyObject
+      value:
+        valueType: 1
+        number: 0
+        reference: {fileID: 482414277}
 --- !u!4 &1902505786
 Transform:
   m_ObjectHideFlags: 0

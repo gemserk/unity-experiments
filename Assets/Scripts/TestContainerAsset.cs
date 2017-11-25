@@ -1,33 +1,27 @@
 ﻿using UnityEngine;
 using Gemserk.Values;
 using System.Collections.Generic;
-using System.Linq;
 
 [CreateAssetMenu(menuName="Gemserk/Values Container")]
 public class TestContainerAsset : ScriptableObject, ValueContainer {
 
-	public List<ValueContainerBehaviour.ValueDefinitionEntry> values = new List<ValueContainerBehaviour.ValueDefinitionEntry>();
+	public ValueContainerUnity valueContainer;
 
 	#region ValueContainer implementation
 
 	public List<string> GetKeys ()
 	{
-		return values.Select (v => v.name).ToList ();
+		return valueContainer.GetKeys ();
 	}
 
 	public Value Get (string key)
 	{
-		foreach (var v in values) {
-			if (v.name.Equals (key)) {
-				return v.value;
-			}
-		}
-
-		return null;
+		return valueContainer.Get (key);
 	}
+
 	public string Name {
 		get {
-			return this.name;
+			return valueContainer.name;
 		}
 	}
 

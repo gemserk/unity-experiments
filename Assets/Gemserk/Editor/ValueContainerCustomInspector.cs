@@ -12,7 +12,7 @@ public class ValueContainerCustomInspector : Editor {
 
 		ValueContainerBehaviour container = (ValueContainerBehaviour)target;
 
-		var valuesProperty = this.serializedObject.FindProperty ("values");
+		var valuesProperty = this.serializedObject.FindProperty ("valueContainer.values");
 
 		var iterator = valuesProperty.GetEnumerator ();
 
@@ -48,12 +48,12 @@ public class ValueContainerCustomInspector : Editor {
 	
 		if (entryToRemove >= 0) {
 			if (EditorUtility.DisplayDialog ("Warning", "Are sure to remove value?", "Yes", "Cancel")) {
-				container.values.RemoveAt (entryToRemove);
+				container.valueContainer.values.RemoveAt (entryToRemove);
 			}
 		}
 
 		if (GUILayout.Button ("Add")) {
-			container.values.Add (new ValueContainerBehaviour.ValueDefinitionEntry ());
+			container.valueContainer.values.Add (new ValueContainerUnity.ValueDefinitionEntry ());
 		}
 
 		serializedObject.ApplyModifiedProperties ();
