@@ -242,9 +242,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myMegaValue:
-    key: CAMERA
-    sourceType: 0
-    container: {fileID: 1902505785}
+    key: PIPOTE
+    sourceType: 1
+    container: {fileID: 11400000, guid: 0fa6d5e4e9937a14caf308a4c7b38578, type: 2}
   myOtherValue:
     key: s
     sourceType: 0

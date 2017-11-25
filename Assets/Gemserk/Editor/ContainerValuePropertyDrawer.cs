@@ -18,9 +18,11 @@ public class ContainerValuePropertyDrawer : PropertyDrawer
 
 		EditorGUI.BeginProperty (position, label, property);
 
-		var sourceRect = new Rect(position.x + maxWidth * 0.75f, position.y + propertyHeight * 0, maxWidth * 0.25f, propertyHeight);
+		var sourceTypeRect = new Rect(position.x + maxWidth * 0.75f, position.y + propertyHeight * 0, maxWidth * 0.25f, propertyHeight);
+		var keyRect = new Rect(position.x, position.y + propertyHeight * 1, maxWidth * 0.5f, propertyHeight);
+		var valueRect = new Rect(position.x + maxWidth * 0.5f, position.y + propertyHeight * 1, maxWidth * 0.5f, propertyHeight);
 
-		sourceType.enumValueIndex = (int) ((ContainerValueBase.SourceType) EditorGUI.EnumPopup (sourceRect, (ContainerValueBase.SourceType) sourceType.enumValueIndex));
+		sourceType.enumValueIndex = (int) ((ContainerValueBase.SourceType) EditorGUI.EnumPopup (sourceTypeRect, (ContainerValueBase.SourceType) sourceType.enumValueIndex));
 
 		bool containerReadonly = false;
 
@@ -34,15 +36,15 @@ public class ContainerValuePropertyDrawer : PropertyDrawer
 		var containerRect = new Rect(position.x, position.y + propertyHeight * 0, maxWidth * 0.75f, propertyHeight);
 
 		EditorGUI.BeginDisabledGroup (containerReadonly);
-		containerProperty.objectReferenceValue = EditorGUI.ObjectField (containerRect, containerProperty.objectReferenceValue, typeof(ValueContainerBase), true);
+		var newObjectReference = EditorGUI.ObjectField (containerRect, containerProperty.objectReferenceValue, typeof(UnityEngine.Object), true);
+		if (newObjectReference is ValueContainer)
+			containerProperty.objectReferenceValue = newObjectReference;
 		EditorGUI.EndDisabledGroup ();
 
 		isGlobal = containerProperty.objectReferenceValue is GlobalValueContainerBehaviour;
 
 		var valueContainer = containerProperty.objectReferenceValue as ValueContainer;
 
-		var keyRect = new Rect(position.x, position.y + propertyHeight * 1, maxWidth * 0.5f, propertyHeight);
-		var valueRect = new Rect(position.x + maxWidth * 0.5f, position.y + propertyHeight * 1, maxWidth * 0.5f, propertyHeight);
 
 		if (valueContainer != null) {
 			var options = valueContainer.GetKeys ();
@@ -97,7 +99,7 @@ public class ContainerValuePropertyDrawer : PropertyDrawer
 		int totalFields = 1;
 
 		var containerProperty = property.FindPropertyRelative ("container");
-		var valueContainer = containerProperty.objectReferenceValue as ValueContainerBase;
+		var valueContainer = containerProperty.objectReferenceValue as ValueContainer;
 
 		if (valueContainer != null) {
 			totalFields = 2;

@@ -11,11 +11,11 @@ namespace Gemserk.Values
 		}
 
 		public SourceType sourceType;
-		public ValueContainerBase container;
+		public UnityEngine.Object container;
 
 		protected override ValueContainer Container {
 			get {
-				return container;
+				return container as ValueContainer;
 			}
 		}
 	}
