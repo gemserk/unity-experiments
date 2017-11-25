@@ -8,5 +8,9 @@ public class InjectorBindingsConfiguration : MonoBehaviour
 	void Awake()
 	{
 		injector.SetBindings (bindings);
+		var injectables = FindObjectsOfType<InjectableBehaviour> ();
+		foreach (var injectable in injectables) {
+			injector.Inject (injectable);
+		}
 	}
 }

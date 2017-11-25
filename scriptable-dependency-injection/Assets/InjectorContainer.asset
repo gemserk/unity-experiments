@@ -8,9 +8,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: beed8e8502709cf4c954a22a4ed42f05, type: 3}
-  m_Name: CommonSceneSystems
+  m_Script: {fileID: 11500000, guid: 863138f540edb7a47895ddf63ca5b6dc, type: 3}
+  m_Name: InjectorContainer
   m_EditorClassIdentifier: 
-  bindings:
-  - name: megaSystem
-    target: {fileID: 11400000, guid: 829ae12be825521439244651991e5f16, type: 2}

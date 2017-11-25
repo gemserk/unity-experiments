@@ -1,28 +1,9 @@
 ﻿using UnityEngine;
-using System;
 
-[CreateAssetMenu(menuName="Gemserk/Injector")]
-public class InjectorAsset : ScriptableObject {
+public abstract class InjectorAsset : ScriptableObject {
 
-	// custom Injection system...
+	public abstract void SetBindings(InjectorBindings bindings);
 
-//	public InjectorBindings bindings;
-	InjectorBindings _bindings;
+	public abstract void Inject (UnityEngine.Object o);
 
-	public void SetBindings(InjectorBindings bindings) {
-		_bindings = bindings;
-	}
-
-	public void Inject (UnityEngine.Object o) 
-	{
-		var t = o.GetType ();
-//		t.GetField(
-
-		foreach (var binding in _bindings.bindings) {
-			var field = t.GetField (binding.name, System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
-			if (field != null) {
-				field.SetValue (o, binding.target);
-			}
-		}
-	}
 }
