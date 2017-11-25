@@ -1,15 +1,14 @@
 using UnityEngine;
 using UnityEditor;
 using Gemserk.Values;
-
 using System.Linq;
 
-[CustomPropertyDrawer(typeof(SerializableContainerValue))]
+[CustomPropertyDrawer(typeof(UnityContainerValue))]
 public class ContainerValuePropertyDrawer : PropertyDrawer
 {
 	const float propertyHeight = 16;
 
-	int totalFields = 2;
+	const int totalFields = 2;
 
 	// Draw the property inside the given rect
 	public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
@@ -29,11 +28,7 @@ public class ContainerValuePropertyDrawer : PropertyDrawer
 
 		var keyRect = new Rect(position.x, position.y + propertyHeight * 1, maxWidth, propertyHeight);
 
-		if (valueContainer == null) {
-//			totalFields = 2;
-//			EditorGUI.LabelField (keyRect, "Select container");
-		} else {
-//			totalFields = 2;
+		if (valueContainer != null) {
 
 			if (valueContainer.values.Count == 0) {
 				EditorGUI.LabelField (keyRect, "Empty Container");

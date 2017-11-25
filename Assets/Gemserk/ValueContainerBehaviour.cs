@@ -4,10 +4,12 @@ using System.Collections.Generic;
 
 namespace Gemserk.Values {
 
-	public enum ValueDefinitionType {
+//	public enum ValueDefinitionType {
 //		Constant,
-		Variable
-	}
+//		Variable
+//		Number,
+//		Object
+//	}
 
 	// property drawer to select the inner value: int, float, string
 
@@ -18,16 +20,19 @@ namespace Gemserk.Values {
 
 //		public ValueDefinitionType type = ValueDefinitionType.Variable;
 
+		// used by editor
+		public int type;
+
 		public float number;
+		public UnityEngine.Object reference;
 
-//		public float f;
-//		public string s;
-
+		public Value GetValue()
+		{
+			return new VariableValue (number, reference);
+		}
 	}
 
 	public class ValueContainerBehaviour : MonoBehaviour, ValueContainer {
-
-//		public ValueDefinition valueDefinitionTest;
 
 		public List<ValueDefinition> values = new List<ValueDefinition>();
 
@@ -40,44 +45,18 @@ namespace Gemserk.Values {
 
 		public Value Get (string key)
 		{
-			ValueDefinition valueDefinition = null;
-
 			foreach (var v in values) {
 				if (v.name.Equals (key)) {
-					valueDefinition = v;
-					break;
+					return v.GetValue ();
 				}
 			}
 
-			if (valueDefinition != null) {
-
-				return new VariableValue (valueDefinition.number);
-
-//				if (valueDefinition.type == ValueDefinitionType.Constant) {
-//					return new ConstantValue ();
-//				} else if (valueDefinition.type == ValueDefinitionType.Variable) {
-//					return new VariableValue ();
-//				}
-			}
-
 			return null;
-//			return _valueContainer.Get (key);
 		}
 
 		#endregion
 
-		// Use this for initialization
-		void Awake () {
-			// adds all its values to the container
-//			foreach (var v in values) {
-//				if (v.type == ValueDefinitionType.Constant) {
-//					_valueContainer.Add (v.name, new ConstantValue ());
-//				} else if (v.type == ValueDefinitionType.Variable) {
-//					_valueContainer.Add (v.name, new VariableValue ());
-//				}
-//			}
-		}
-
+		// TODO: cache values?
 	}
 
 }

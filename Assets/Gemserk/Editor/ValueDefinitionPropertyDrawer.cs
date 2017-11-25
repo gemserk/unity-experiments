@@ -7,39 +7,43 @@ public class ValueDefinitionPropertyDrawer : PropertyDrawer
 {
 	const float propertyHeight = 16;
 
-	const int totalFields = 1;
+	const int totalFields = 2;
 
 	// Draw the property inside the given rect
 	public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
 	{
-		//base.OnGUI (position, property, label);
+		var maxWidth = position.width;
 
 		var nameProperty = property.FindPropertyRelative ("name");
 		var numberValueProperty = property.FindPropertyRelative ("number");
+		var objectValueProperty = property.FindPropertyRelative ("reference");
+		var typeProperty = property.FindPropertyRelative ("type");
 
 		EditorGUI.BeginProperty (position, label, property);
 
-		var maxWidth = position.width;
-
-		// position = EditorGUI.PrefixLabel(position, GUIUtility.GetControlID(FocusType.Passive), label);
-
 		var keyRect = new Rect(position.x, position.y + propertyHeight * 0, maxWidth / 2, propertyHeight);
-//		EditorGUI.PropertyField(keyRect, property.FindPropertyRelative("name"));
-
 		nameProperty.stringValue = EditorGUI.TextField(keyRect, nameProperty.stringValue);
 
-//		var typeRect = new Rect(position.width - 80, position.y, 80, propertyHeight);
-//		EditorGUI.Popup (typeRect, 0, new string[] { 
-////			"Int", 
-//			"Float", 
-////			"String"
-//		});
+		var typeRect = new Rect(position.x + maxWidth / 2, position.y + propertyHeight * 0, 
+			maxWidth / 2, propertyHeight);
+		
+		typeProperty.intValue = EditorGUI.Popup (typeRect, typeProperty.intValue, new string[] { 
+			"Number", 
+			"Object", 
+		});
 
-		var valueRect = new Rect(position.x + maxWidth / 2, position.y + propertyHeight * 0, maxWidth / 2, propertyHeight);
+		var valueRect = new Rect (position.x, position.y + propertyHeight * 1, 
+			maxWidth, propertyHeight);
 
-		numberValueProperty.floatValue = 
-			EditorGUI.FloatField(valueRect, numberValueProperty.floatValue);
-
+		if (typeProperty.intValue == 0) {
+			numberValueProperty.floatValue = EditorGUI.FloatField (valueRect, numberValueProperty.floatValue);
+			objectValueProperty.objectReferenceValue = null;
+		} else if (typeProperty.intValue == 1) {
+			numberValueProperty.floatValue = 0;
+			objectValueProperty.objectReferenceValue = 
+				EditorGUI.ObjectField (valueRect, objectValueProperty.objectReferenceValue, typeof(UnityEngine.Object), true);
+		}
+			
 		EditorGUI.EndProperty ();
 	}
 

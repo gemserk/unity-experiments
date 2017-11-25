@@ -1,27 +1,21 @@
 ﻿using UnityEngine;
-using System;
 
 namespace Gemserk.Values
 {
-	[SerializableAttribute]
-	public class SerializableContainerValue : ContainerValue
-	{
-		public ValueContainerBehaviour container;
-
-		protected override ValueContainer Container {
-			get {
-				return container;
-			}
-		}
-	}
-
 	public class ValueConsumerBehaviour : MonoBehaviour {
 
-		public SerializableContainerValue valueGetter;
+		public UnityContainerValue myValue;
+
+		public UnityContainerValue myValue2;
 
 		// Use this for initialization
-		void Start () {
-			Debug.Log(valueGetter.GetFloat());
+		void Start () 
+		{
+			if (myValue.container != null)
+				Debug.Log(myValue.GetFloat());
+
+			if (myValue2.container != null)
+				Debug.Log(myValue2.Get<GameObject>().name);
 		}
 
 	}
