@@ -14,26 +14,19 @@ public class ValueDefinitionPropertyDrawer : PropertyDrawer
 	{
 		var maxWidth = position.width;
 
-		var nameProperty = property.FindPropertyRelative ("name");
 		var numberValueProperty = property.FindPropertyRelative ("number");
 		var objectValueProperty = property.FindPropertyRelative ("reference");
 		var typeProperty = property.FindPropertyRelative ("type");
 
 		EditorGUI.BeginProperty (position, label, property);
 
-		var keyRect = new Rect(position.x, position.y + propertyHeight * 0, maxWidth / 2, propertyHeight);
-		nameProperty.stringValue = EditorGUI.TextField(keyRect, nameProperty.stringValue);
-
-		var typeRect = new Rect(position.x + maxWidth / 2, position.y + propertyHeight * 0, 
-			maxWidth / 2, propertyHeight);
+		var valueRect = new Rect(position.x, position.y + propertyHeight * 0, maxWidth / 2, propertyHeight);
+		var typeRect = new Rect(position.x + maxWidth / 2, position.y + propertyHeight * 0, maxWidth / 2, propertyHeight);
 		
 		typeProperty.intValue = EditorGUI.Popup (typeRect, typeProperty.intValue, new string[] { 
 			"Number", 
 			"Object", 
 		});
-
-		var valueRect = new Rect (position.x, position.y + propertyHeight * 1, 
-			maxWidth, propertyHeight);
 
 		if (typeProperty.intValue == 0) {
 			numberValueProperty.floatValue = EditorGUI.FloatField (valueRect, numberValueProperty.floatValue);

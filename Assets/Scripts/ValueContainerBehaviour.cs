@@ -13,28 +13,16 @@ namespace Gemserk.Values {
 
 	// property drawer to select the inner value: int, float, string
 
-	[Serializable]
-	public class ValueDefinition {
-
-		public string name;
-
-//		public ValueDefinitionType type = ValueDefinitionType.Variable;
-
-		// used by editor
-		public int type;
-
-		public float number;
-		public UnityEngine.Object reference;
-
-		public Value GetValue()
-		{
-			return new VariableValue (number, reference);
-		}
-	}
-
 	public class ValueContainerBehaviour : MonoBehaviour, ValueContainer {
 
-		public List<ValueDefinition> values = new List<ValueDefinition>();
+		[Serializable]
+		public class ValueDefinitionEntry
+		{
+			public string name;
+			public ValueDefinition value;
+		}
+
+		public List<ValueDefinitionEntry> values = new List<ValueDefinitionEntry>();
 
 		// ValueContainerDictionary _valueContainer = new ValueContainerDictionary();
 
@@ -47,7 +35,7 @@ namespace Gemserk.Values {
 		{
 			foreach (var v in values) {
 				if (v.name.Equals (key)) {
-					return v.GetValue ();
+					return v.value;
 				}
 			}
 

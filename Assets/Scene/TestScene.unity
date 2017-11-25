@@ -141,9 +141,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   values:
   - name: easdas
-    type: 1
-    number: 0
-    reference: {fileID: 1235495999}
+    value:
+      type: 0
+      number: 0
+      reference: {fileID: 0}
 --- !u!4 &400965849
 Transform:
   m_ObjectHideFlags: 0
@@ -199,17 +200,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   values:
   - name: REFINERIES_COUNT1
-    type: 0
-    number: 5
-    reference: {fileID: 0}
+    value:
+      type: 0
+      number: 0
+      reference: {fileID: 0}
   - name: REFINERIES_COUNT2
-    type: 0
-    number: 2
-    reference: {fileID: 0}
+    value:
+      type: 0
+      number: 0
+      reference: {fileID: 0}
   - name: REFINERIES_COUNT4
-    type: 0
-    number: 1
-    reference: {fileID: 0}
+    value:
+      type: 0
+      number: 0
+      reference: {fileID: 0}
 --- !u!1 &670718848
 GameObject:
   m_ObjectHideFlags: 0
@@ -284,10 +288,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   values:
-  - key: 
+  - key: REFINERIES_COUNT4
     container: {fileID: 482414279}
-  - key: 
-    container: {fileID: 0}
+  - key: easdas
+    container: {fileID: 400965848}
 --- !u!4 &1235496001
 Transform:
   m_ObjectHideFlags: 0
@@ -380,4 +384,52 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2070599862
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 2070599864}
+  - component: {fileID: 2070599863}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2070599863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2070599862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d417dd9018fc4824897505d90f091eab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  value:
+    key: REFINERIES_COUNT1
+    container: {fileID: 482414279}
+  number: 150
+  definition:
+    type: 0
+    number: 0
+    reference: {fileID: 0}
+--- !u!4 &2070599864
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2070599862}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

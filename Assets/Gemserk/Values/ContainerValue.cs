@@ -9,6 +9,12 @@ namespace Gemserk.Values
 			get;
 		}
 
+		protected Value Value {
+			get { 
+				return Container.Get (key);
+			}
+		}
+
 		#region Value implementation
 
 //		public int GetInt ()
@@ -18,12 +24,22 @@ namespace Gemserk.Values
 
 		public float GetFloat ()
 		{
-			return Container.Get(key).GetFloat();
+			return Value.GetFloat();
 		}
 
 		public T Get<T> () where T : class
 		{
-			return Container.Get(key).Get<T>();
+			return Value.Get<T>();
+		}
+
+		public void SetFloat (float f)
+		{
+			Value.SetFloat(f);
+		}
+
+		public void Set<T> (T t) where T : class
+		{
+			Value.Set<T>(t);
 		}
 
 		public ValueType ValueType {

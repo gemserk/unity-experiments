@@ -9,6 +9,10 @@ namespace Gemserk.Values
 
 		T Get<T>() where T : class;
 
+		void SetFloat(float f);
+
+		void Set<T>(T t) where T : class;
+
 		ValueType ValueType {
 			get;
 		}
