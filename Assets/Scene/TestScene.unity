@@ -112,6 +112,49 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &400965847
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 400965849}
+  - component: {fileID: 400965848}
+  m_Layer: 0
+  m_Name: TestObject (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &400965848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 400965847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a8ff94bac829b045b4d06612d525c96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  values:
+  - name: easdas
+    number: 0
+--- !u!4 &400965849
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 400965847}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &482414277
 GameObject:
   m_ObjectHideFlags: 0
@@ -157,6 +200,8 @@ MonoBehaviour:
     number: 1
   - name: REFINERIES_COUNT2
     number: 1
+  - name: REFINERIES_COUNT4
+    number: 1
 --- !u!1 &1235495999
 GameObject:
   m_ObjectHideFlags: 0
@@ -185,8 +230,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   valueGetter:
-    key: REFINERIES_COUNT1
-    container: {fileID: 0}
+    key: easdas
+    container: {fileID: 400965848}
 --- !u!4 &1235496001
 Transform:
   m_ObjectHideFlags: 0
