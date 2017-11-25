@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEditor;
 
-public abstract class ValueContainerEditorBase : Editor
+public abstract class ValueContainerEditor : Editor
 {
 	public override void OnInspectorGUI() {
 

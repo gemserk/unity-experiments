@@ -2,7 +2,7 @@
 using Gemserk.Values;
 
 [CustomEditor(typeof(ValueContainerBehaviour), true)]
-public class ValueContainerBehaviourEditor : ValueContainerEditorBase {
+public class ValueContainerBehaviourEditor : ValueContainerEditor {
 
 	public override void AddNewElement()
 	{

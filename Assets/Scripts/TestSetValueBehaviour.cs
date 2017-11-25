@@ -3,9 +3,9 @@ using Gemserk.Values;
 
 public class TestSetValueBehaviour : MonoBehaviour {
 
-	public Gemserk.Values.ContainerValueBase value;
+	public Gemserk.Values.ContainerValueUnity value;
 
-	public ValueDefinition definition;
+	public ValueUnity definition;
 
 	[InspectorButtonAttribute("OnConfigureValue")]
 	public bool setValue;

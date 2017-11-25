@@ -2,8 +2,8 @@
 using UnityEditor;
 using Gemserk.Values;
 
-[CustomPropertyDrawer(typeof(ValueDefinition))]
-public class ValueDefinitionPropertyDrawer : PropertyDrawer
+[CustomPropertyDrawer(typeof(ValueUnity))]
+public class ValueUnityPropertyDrawer : PropertyDrawer
 {
 	const float propertyHeight = 16;
 

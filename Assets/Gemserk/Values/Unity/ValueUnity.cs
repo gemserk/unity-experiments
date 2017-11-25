@@ -3,7 +3,7 @@ using System;
 namespace Gemserk.Values {
 
 	[Serializable]
-	public class ValueDefinition : Value {
+	public class ValueUnity : Value {
 
 		public ValueType valueType;
 

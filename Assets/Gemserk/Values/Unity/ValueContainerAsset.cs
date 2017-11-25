@@ -3,7 +3,7 @@ using Gemserk.Values;
 using System.Collections.Generic;
 
 [CreateAssetMenu(menuName="Gemserk/Values Container")]
-public class ValuesContainerAsset : ScriptableObject, ValueContainer {
+public class ValueContainerAsset : ScriptableObject, ValueContainer {
 
 	public ValueContainerUnity valueContainer;
 
@@ -18,13 +18,7 @@ public class ValuesContainerAsset : ScriptableObject, ValueContainer {
 	{
 		return valueContainer.Get (key);
 	}
-
-	public string Name {
-		get {
-			return name;
-		}
-	}
-
+		
 	#endregion
 
 

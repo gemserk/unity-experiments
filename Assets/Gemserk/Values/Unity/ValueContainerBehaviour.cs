@@ -21,12 +21,6 @@ namespace Gemserk.Values {
 			return valueContainer.Get (key);
 		}
 
-		public string Name {
-			get {
-				return gameObject.name;
-			}
-		}
-
 		#endregion
 
 		// TODO: cache values?

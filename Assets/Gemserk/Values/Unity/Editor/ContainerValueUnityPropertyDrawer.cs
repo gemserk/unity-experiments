@@ -3,8 +3,8 @@ using UnityEditor;
 using Gemserk.Values;
 using System.Linq;
 
-[CustomPropertyDrawer(typeof(ContainerValueBase))]
-public class ContainerValuePropertyDrawer : PropertyDrawer
+[CustomPropertyDrawer(typeof(ContainerValueUnity))]
+public class ContainerValueUnityPropertyDrawer : PropertyDrawer
 {
 	const float propertyHeight = 16;
 
@@ -22,11 +22,11 @@ public class ContainerValuePropertyDrawer : PropertyDrawer
 		var keyRect = new Rect(position.x, position.y + propertyHeight * 1, maxWidth * 0.5f, propertyHeight);
 		var valueRect = new Rect(position.x + maxWidth * 0.5f, position.y + propertyHeight * 1, maxWidth * 0.5f, propertyHeight);
 
-		sourceType.enumValueIndex = (int) ((ContainerValueBase.SourceType) EditorGUI.EnumPopup (sourceTypeRect, (ContainerValueBase.SourceType) sourceType.enumValueIndex));
+		sourceType.enumValueIndex = (int) ((ContainerValueUnity.SourceType) EditorGUI.EnumPopup (sourceTypeRect, (ContainerValueUnity.SourceType) sourceType.enumValueIndex));
 
 		bool containerReadonly = false;
 
-		bool isGlobal = sourceType.enumValueIndex == (int)ContainerValueBase.SourceType.Global;
+		bool isGlobal = sourceType.enumValueIndex == (int)ContainerValueUnity.SourceType.Global;
 	
 		if (isGlobal) {
 			containerProperty.objectReferenceValue = GameObject.FindObjectOfType<GlobalValueContainerBehaviour> ();
@@ -51,7 +51,17 @@ public class ContainerValuePropertyDrawer : PropertyDrawer
 
 			int currentSelection = options.IndexOf (keyProperty.stringValue);
 
-			var modifiedOptons = options.Select (o => string.Format("{1}.{0}", o, (isGlobal ? "Global" : valueContainer.Name))).ToList ();
+			string name = null;
+
+			if (valueContainer is UnityEngine.Object) {
+				name = (valueContainer as UnityEngine.Object).name;
+			}
+
+			var modifiedOptons = options.Select (o => {
+				if (string.IsNullOrEmpty(name))
+					return o;
+				return string.Format("{1}.{0}", o, (isGlobal ? "Global" : name));
+			}).ToList ();
 
 			modifiedOptons.Add ("None");
 

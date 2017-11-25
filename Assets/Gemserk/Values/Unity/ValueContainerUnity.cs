@@ -11,20 +11,12 @@ namespace Gemserk.Values
 		public class ValueDefinitionEntry
 		{
 			public string name;
-			public ValueDefinition value;
+			public ValueUnity value;
 		}
-
-		public string name;
 
 		public List<ValueDefinitionEntry> values = new List<ValueDefinitionEntry>();
 
 		// TODO: optimize to get o(1) for get and for keys....
-
-		public string Name {
-			get {
-				return name;
-			}
-		}
 
 		public List<string> GetKeys ()
 		{

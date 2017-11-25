@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class TestConsumerBehaviour : MonoBehaviour {
 
-	public Gemserk.Values.ContainerValueBase myMegaValue;
-	public Gemserk.Values.ContainerValueBase myOtherValue;
+	public Gemserk.Values.ContainerValueUnity myMegaValue;
+	public Gemserk.Values.ContainerValueUnity myOtherValue;
 
 	void Start()
 	{
