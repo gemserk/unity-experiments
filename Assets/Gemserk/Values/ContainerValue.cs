@@ -1,31 +1,34 @@
 
 namespace Gemserk.Values
 {
-	public class ContainerValue : Value
+	public abstract class ContainerValue : Value
 	{
-		public ValueContainerBehaviour container;
 		public string key;
+
+		protected abstract ValueContainer Container {
+			get;
+		}
 
 		#region Value implementation
 
 		public int GetInt ()
 		{
-			return container.Get(key).GetInt();
+			return Container.Get(key).GetInt();
 		}
 
 		public float GetFloat ()
 		{
-			return container.Get(key).GetFloat();
+			return Container.Get(key).GetFloat();
 		}
 
 		public T Get<T> () where T : class
 		{
-			return container.Get(key).Get<T>();
+			return Container.Get(key).Get<T>();
 		}
 
 		public ValueType ValueType {
 			get {
-				return container.Get (key).ValueType;
+				return Container.Get (key).ValueType;
 			}
 		}
 		#endregion

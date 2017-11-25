@@ -3,17 +3,21 @@ using System;
 
 namespace Gemserk.Values
 {
-
-
 	[SerializableAttribute]
-	public class ValueGetter : ContainerValue
+	public class SerializableContainerValue : ContainerValue
 	{
+		public ValueContainerBehaviour container;
 
+		protected override ValueContainer Container {
+			get {
+				return container;
+			}
+		}
 	}
 
 	public class ValueConsumerBehaviour : MonoBehaviour {
 
-		public ValueGetter valueGetter;
+		public SerializableContainerValue valueGetter;
 
 		// Use this for initialization
 		void Start () {
