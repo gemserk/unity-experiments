@@ -36,21 +36,21 @@ public class ContainerValueUnityPropertyDrawer : PropertyDrawer
 		bool isGlobal = sourceType.enumValueIndex == (int)ContainerValueUnity.SourceType.Global;
 	
 		GlobalValueContainerBehaviour[] globalContainers = null;
+		ValueContainer valueContainer = null;
 
 		if (isGlobal) {
 			// performance cost here, maybe we could have a component to hold all the containers and the global containers
 			// register themselves in this component or something like that.
-			globalContainers = GameObject.FindObjectsOfType<GlobalValueContainerBehaviour>();
+			globalContainers = GameObject.FindObjectsOfType<GlobalValueContainerBehaviour> ();
 		
 			var variables = new List<ContainerVariable> ();
 
-			globalContainers.ToList().ForEach (gc => {
-				gc.valueContainer.GetKeys().ForEach(k => 
-					{ 
-						variables.Add(new ContainerVariable() {
-							name = string.Format("{0}.{1}", gc.name, k),
-							key = k,
-							container = gc
+			globalContainers.ToList ().ForEach (gc => {
+				gc.valueContainer.GetKeys ().ForEach (k => { 
+					variables.Add (new ContainerVariable () {
+						name = string.Format ("{0}.{1}", gc.name, k),
+						key = k,
+						container = gc
 					});
 				});
 			});
@@ -66,9 +66,9 @@ public class ContainerValueUnityPropertyDrawer : PropertyDrawer
 			if (selection == -1)
 				selection = variables.Count - 1;
 
-			var options = variables.Select (v => v.name).ToList();
+			var options = variables.Select (v => v.name).ToList ();
 
-			var newSelection = EditorGUI.Popup(keyRect, selection, options.ToArray());
+			var newSelection = EditorGUI.Popup (keyRect, selection, options.ToArray ());
 
 			if (newSelection != selection) {
 				if (newSelection == variables.Count - 1) {
@@ -81,53 +81,55 @@ public class ContainerValueUnityPropertyDrawer : PropertyDrawer
 				}
 			}
 
+		} else {
+			valueContainer = containerProperty.objectReferenceValue as ValueContainer;
+	
+			if (valueContainer != null) {
+				var options = valueContainer.GetKeys ();
+	
+				int currentSelection = options.IndexOf (keyProperty.stringValue);
+	
+				string name = null;
+	
+				if (valueContainer is UnityEngine.Object) {
+					name = (valueContainer as UnityEngine.Object).name;
+				}
+	
+				var modifiedOptons = options.Select (o => {
+					if (string.IsNullOrEmpty(name))
+						return o;
+					return string.Format("{1}.{0}", o, name);
+				}).ToList ();
+	
+				modifiedOptons.Add ("None");
+	
+				if (currentSelection == -1)
+					currentSelection = modifiedOptons.Count - 1;
+	
+				int newSelection = EditorGUI.Popup(keyRect, currentSelection, modifiedOptons.ToArray());
+	
+				if (newSelection != currentSelection) {
+					if (newSelection == modifiedOptons.Count - 1)
+						keyProperty.stringValue = "";
+					else
+						keyProperty.stringValue = options [newSelection];
+				}
+			}
 		}
-			
-//
-//		if (valueContainer != null) {
-//			var options = valueContainer.GetKeys ();
-//
-//			int currentSelection = options.IndexOf (keyProperty.stringValue);
-//
-//			string name = null;
-//
-//			if (valueContainer is UnityEngine.Object) {
-//				name = (valueContainer as UnityEngine.Object).name;
-//			}
-//
-//			var modifiedOptons = options.Select (o => {
-//				if (string.IsNullOrEmpty(name))
-//					return o;
-//				return string.Format("{1}.{0}", o, name);
-//			}).ToList ();
-//
-//			modifiedOptons.Add ("None");
-//
-//			if (currentSelection == -1)
-//				currentSelection = modifiedOptons.Count - 1;
-//
-//			int newSelection = EditorGUI.Popup(keyRect, currentSelection, modifiedOptons.ToArray());
-//
-//			if (newSelection != currentSelection) {
-//				if (newSelection == modifiedOptons.Count - 1)
-//					keyProperty.stringValue = "";
-//				else
-//					keyProperty.stringValue = options [newSelection];
-//			}
-//
-//			if (!string.IsNullOrEmpty (keyProperty.stringValue)) {
-//				DrawValuePreview (valueRect, valueContainer.Get(keyProperty.stringValue));
-//			}
-//
-//		}
 
 		EditorGUI.BeginDisabledGroup (isGlobal);
 		var newObjectReference = EditorGUI.ObjectField (containerRect, containerProperty.objectReferenceValue, typeof(UnityEngine.Object), true);
-		if (newObjectReference is ValueContainer)
-			containerProperty.objectReferenceValue = newObjectReference;
+
+		if (newObjectReference == null)
+			containerProperty.objectReferenceValue = null;
+		else {
+			if (newObjectReference is ValueContainer)
+				containerProperty.objectReferenceValue = newObjectReference;
+		}
+
 		EditorGUI.EndDisabledGroup ();
 
-		var valueContainer = containerProperty.objectReferenceValue as ValueContainer;
+		valueContainer = containerProperty.objectReferenceValue as ValueContainer;
 
 		if (!string.IsNullOrEmpty (keyProperty.stringValue) && containerProperty.objectReferenceValue != null) {
 			DrawValuePreview (valueRect, valueContainer.Get(keyProperty.stringValue));
