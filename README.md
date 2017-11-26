@@ -2,9 +2,13 @@
 
 Different experiments with Unity.
 
-# Values Containers
+# Values Containers / Global Variables
 
-Indireciton on object values and Untiy editor stuff.
+Global variables in Editor and variable containers, indirection on variable location.
+
+# Scriptable Dependency Injection
+
+Just testing ideas on injection in Unity using different ways, one of them is Scriptable Objects.
 
 # Downloads 
 
