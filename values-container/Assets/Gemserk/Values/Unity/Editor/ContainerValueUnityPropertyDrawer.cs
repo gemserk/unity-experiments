@@ -24,27 +24,21 @@ public class ContainerValueUnityPropertyDrawer : PropertyDrawer
 
 		sourceType.enumValueIndex = (int) ((ContainerValueUnity.SourceType) EditorGUI.EnumPopup (sourceTypeRect, (ContainerValueUnity.SourceType) sourceType.enumValueIndex));
 
-		bool containerReadonly = false;
-
 		bool isGlobal = sourceType.enumValueIndex == (int)ContainerValueUnity.SourceType.Global;
 	
 		if (isGlobal) {
 			containerProperty.objectReferenceValue = GameObject.FindObjectOfType<GlobalValueContainerBehaviour> ();
-			containerReadonly = true;
 		}
 
 		var containerRect = new Rect(position.x, position.y + propertyHeight * 0, maxWidth * 0.75f, propertyHeight);
 
-		EditorGUI.BeginDisabledGroup (containerReadonly);
+		EditorGUI.BeginDisabledGroup (isGlobal);
 		var newObjectReference = EditorGUI.ObjectField (containerRect, containerProperty.objectReferenceValue, typeof(UnityEngine.Object), true);
 		if (newObjectReference is ValueContainer)
 			containerProperty.objectReferenceValue = newObjectReference;
 		EditorGUI.EndDisabledGroup ();
 
-		isGlobal = containerProperty.objectReferenceValue is GlobalValueContainerBehaviour;
-
 		var valueContainer = containerProperty.objectReferenceValue as ValueContainer;
-
 
 		if (valueContainer != null) {
 			var options = valueContainer.GetKeys ();
@@ -60,7 +54,7 @@ public class ContainerValueUnityPropertyDrawer : PropertyDrawer
 			var modifiedOptons = options.Select (o => {
 				if (string.IsNullOrEmpty(name))
 					return o;
-				return string.Format("{1}.{0}", o, (isGlobal ? "Global" : name));
+				return string.Format("{1}.{0}", o, name);
 			}).ToList ();
 
 			modifiedOptons.Add ("None");
