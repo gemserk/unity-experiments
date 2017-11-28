@@ -7,8 +7,12 @@ public class ValueContainerAsset : ScriptableObject, ValueContainerUnityObject {
 
 	public ValueContainerUnity valueContainer;
 
+	public string optionalName;
+
 	public string Name {
 		get {
+			if (!string.IsNullOrEmpty (optionalName))
+				return optionalName;
 			return name;
 		}
 	}

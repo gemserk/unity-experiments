@@ -5,10 +5,14 @@ namespace Gemserk.Values {
 
 	public class ValueContainerBehaviour : MonoBehaviour, ValueContainerUnityObject {
 
+		public string optionalName;
+
 		public ValueContainerUnity valueContainer;
 
 		public string Name {
 			get { 
+				if (!string.IsNullOrEmpty (optionalName))
+					return optionalName;
 				return gameObject.name;
 			}
 		}

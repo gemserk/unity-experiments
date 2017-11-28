@@ -18,3 +18,4 @@ MonoBehaviour:
         valueType: 1
         number: 0
         reference: {fileID: 11500000, guid: b50269fe18b41104182bf5185a3e2224, type: 3}
+  optionalName: DATA1

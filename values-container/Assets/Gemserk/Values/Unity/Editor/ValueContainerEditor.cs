@@ -6,6 +6,8 @@ public abstract class ValueContainerEditor : Editor
 {
 	public override void OnInspectorGUI() {
 
+		EditorGUILayout.PropertyField (serializedObject.FindProperty ("optionalName"));
+
 		var valuesProperty = this.serializedObject.FindProperty ("valueContainer.values");
 
 		var iterator = valuesProperty.GetEnumerator ();
