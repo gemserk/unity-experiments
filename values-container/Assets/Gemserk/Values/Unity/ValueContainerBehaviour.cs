@@ -3,17 +3,6 @@ using UnityEngine;
 
 namespace Gemserk.Values {
 
-	public interface ValueContainerUnityObject : ValueContainer
-	{
-		string Name {
-			get;
-		}
-
-		ValueContainer ValueContainer {
-			get;
-		}
-	}
-
 	public class ValueContainerBehaviour : MonoBehaviour, ValueContainerUnityObject {
 
 		public ValueContainerUnity valueContainer;
