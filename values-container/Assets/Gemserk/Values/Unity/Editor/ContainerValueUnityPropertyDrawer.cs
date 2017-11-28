@@ -18,7 +18,7 @@ public class ContainerValueUnityPropertyDrawer : PropertyDrawer
 
 	public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
 	{
-		var sourceType = property.FindPropertyRelative ("sourceType");
+		var sourceTypeProperty = property.FindPropertyRelative ("sourceType");
 		var containerProperty = property.FindPropertyRelative ("container");
 		var keyProperty = property.FindPropertyRelative ("key");
 
@@ -31,56 +31,28 @@ public class ContainerValueUnityPropertyDrawer : PropertyDrawer
 		var keyRect = new Rect(position.x, position.y + propertyHeight * 1, maxWidth * 0.5f, propertyHeight);
 		var valueRect = new Rect(position.x + maxWidth * 0.5f, position.y + propertyHeight * 1, maxWidth * 0.5f, propertyHeight);
 
-		sourceType.enumValueIndex = (int) ((ContainerValueUnity.SourceType) EditorGUI.EnumPopup (sourceTypeRect, (ContainerValueUnity.SourceType) sourceType.enumValueIndex));
+		sourceTypeProperty.enumValueIndex = (int) ((ContainerValueUnity.SourceType) EditorGUI.EnumPopup (sourceTypeRect, (ContainerValueUnity.SourceType) sourceTypeProperty.enumValueIndex));
 
-		bool isGlobal = sourceType.enumValueIndex == (int)ContainerValueUnity.SourceType.Global;
+		ContainerValueUnity.SourceType sourceType = (ContainerValueUnity.SourceType)sourceTypeProperty.intValue;
+
+		bool isGlobal = sourceTypeProperty.enumValueIndex == (int)ContainerValueUnity.SourceType.Global;
 	
 		GlobalValueContainerBehaviour[] globalContainers = null;
 		ValueContainer valueContainer = null;
 
-		if (isGlobal) {
+		if (sourceType == ContainerValueUnity.SourceType.Global) {
 			// performance cost here, maybe we could have a component to hold all the containers and the global containers
 			// register themselves in this component or something like that.
 			globalContainers = GameObject.FindObjectsOfType<GlobalValueContainerBehaviour> ();
 		
-			var variables = new List<ContainerVariable> ();
+			DrawSelectionFromContainers (keyRect, globalContainers.Select (g => g as ValueContainerBehaviour).ToList (), containerProperty, keyProperty);
+		} else if (sourceType == ContainerValueUnity.SourceType.Local) {
 
-			globalContainers.ToList ().ForEach (gc => {
-				gc.valueContainer.GetKeys ().ForEach (k => { 
-					variables.Add (new ContainerVariable () {
-						name = string.Format ("{0}.{1}", gc.name, k),
-						key = k,
-						container = gc
-					});
-				});
-			});
+			var targetObject = property.serializedObject.targetObject as MonoBehaviour;
+			var containers = targetObject.GetComponentsInChildren<ValueContainerBehaviour> ();
 
-			variables.Add (new ContainerVariable () { 
-				name = "None",
-				key = "",
-				container = null
-			});
-
-			var selection = variables.FindIndex (v => v.container == containerProperty.objectReferenceValue && v.key == keyProperty.stringValue);
-
-			if (selection == -1)
-				selection = variables.Count - 1;
-
-			var options = variables.Select (v => v.name).ToList ();
-
-			var newSelection = EditorGUI.Popup (keyRect, selection, options.ToArray ());
-
-			if (newSelection != selection) {
-				if (newSelection == variables.Count - 1) {
-					containerProperty.objectReferenceValue = null;
-					keyProperty.stringValue = "";
-				} else {
-					var newVariable = variables [newSelection];
-					containerProperty.objectReferenceValue = newVariable.container;
-					keyProperty.stringValue = newVariable.key;
-				}
-			}
-
+			DrawSelectionFromContainers (keyRect, containers.ToList(), containerProperty, keyProperty);
+		
 		} else {
 			valueContainer = containerProperty.objectReferenceValue as ValueContainer;
 	
@@ -136,6 +108,48 @@ public class ContainerValueUnityPropertyDrawer : PropertyDrawer
 		}
 
 		EditorGUI.EndProperty ();
+	}
+
+	void DrawSelectionFromContainers(Rect position, List<ValueContainerBehaviour> containers, SerializedProperty containerProperty, SerializedProperty keyProperty) {
+
+		var variables = new List<ContainerVariable> ();
+
+		containers.ForEach (c => {
+			c.valueContainer.GetKeys ().ForEach (k => { 
+				variables.Add (new ContainerVariable () {
+					name = string.Format ("{0}.{1}", c.name, k),
+					key = k,
+					container = c
+				});
+			});
+		});
+
+		variables.Add (new ContainerVariable () { 
+			name = "None",
+			key = "",
+			container = null
+		});
+
+		var selection = variables.FindIndex (v => v.container == containerProperty.objectReferenceValue && v.key == keyProperty.stringValue);
+
+		if (selection == -1)
+			selection = variables.Count - 1;
+
+		var options = variables.Select (v => v.name).ToList ();
+
+		var newSelection = EditorGUI.Popup (position, selection, options.ToArray ());
+
+		if (newSelection != selection) {
+			if (newSelection == variables.Count - 1) {
+				containerProperty.objectReferenceValue = null;
+				keyProperty.stringValue = "";
+			} else {
+				var newVariable = variables [newSelection];
+				containerProperty.objectReferenceValue = newVariable.container;
+				keyProperty.stringValue = newVariable.key;
+			}
+		}
+			
 	}
 
 	void DrawValuePreview(Rect position, Value value)

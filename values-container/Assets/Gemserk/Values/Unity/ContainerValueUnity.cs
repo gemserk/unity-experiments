@@ -7,7 +7,8 @@ namespace Gemserk.Values
 	{
 		public enum SourceType {
 			Global, 
-			Local
+			Local,
+			Specific
 		}
 
 		public SourceType sourceType;
