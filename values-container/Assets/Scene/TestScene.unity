@@ -270,14 +270,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 113da9de47a9a9c4fb0dc05a529de3c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myMegaValue:
-    key: SuperNumber
+  values:
+  - key: SuperNumber
     sourceType: 0
     container: {fileID: 1414552199}
-  myOtherValue:
-    key: SOME_VALUE
+  - key: SOME_VALUE
     sourceType: 1
-    container: {fileID: 1323585253}
+    container: {fileID: 622738394}
+  - key: asdsa
+    sourceType: 2
+    container: {fileID: 11400000, guid: 0fa6d5e4e9937a14caf308a4c7b38578, type: 2}
 --- !u!4 &670718850
 Transform:
   m_ObjectHideFlags: 0

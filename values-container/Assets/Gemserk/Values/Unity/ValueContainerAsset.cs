@@ -3,9 +3,21 @@ using Gemserk.Values;
 using System.Collections.Generic;
 
 [CreateAssetMenu(menuName="Gemserk/Values Container")]
-public class ValueContainerAsset : ScriptableObject, ValueContainer {
+public class ValueContainerAsset : ScriptableObject, ValueContainerUnityObject {
 
 	public ValueContainerUnity valueContainer;
+
+	public string Name {
+		get {
+			return name;
+		}
+	}
+
+	public ValueContainer ValueContainer {
+		get {
+			return valueContainer;
+		}
+	}
 
 	#region ValueContainer implementation
 

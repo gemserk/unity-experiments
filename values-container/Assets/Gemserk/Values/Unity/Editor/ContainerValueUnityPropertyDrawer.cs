@@ -38,54 +38,30 @@ public class ContainerValueUnityPropertyDrawer : PropertyDrawer
 		bool isGlobal = sourceTypeProperty.enumValueIndex == (int)ContainerValueUnity.SourceType.Global;
 	
 		GlobalValueContainerBehaviour[] globalContainers = null;
-		ValueContainer valueContainer = null;
+		ValueContainerUnityObject valueContainer = null;
 
 		if (sourceType == ContainerValueUnity.SourceType.Global) {
 			// performance cost here, maybe we could have a component to hold all the containers and the global containers
 			// register themselves in this component or something like that.
 			globalContainers = GameObject.FindObjectsOfType<GlobalValueContainerBehaviour> ();
 		
-			DrawSelectionFromContainers (keyRect, globalContainers.Select (g => g as ValueContainerBehaviour).ToList (), containerProperty, keyProperty);
+			DrawSelectionFromContainers (keyRect, globalContainers.Select (g => g as ValueContainerUnityObject).ToList (), containerProperty, keyProperty);
 		} else if (sourceType == ContainerValueUnity.SourceType.Local) {
 
 			var targetObject = property.serializedObject.targetObject as MonoBehaviour;
-			var containers = targetObject.GetComponentsInChildren<ValueContainerBehaviour> ();
+			var containers = targetObject.GetComponentsInChildren<ValueContainerUnityObject> ();
 
 			DrawSelectionFromContainers (keyRect, containers.ToList(), containerProperty, keyProperty);
 		
 		} else {
-			valueContainer = containerProperty.objectReferenceValue as ValueContainer;
-	
+			valueContainer = containerProperty.objectReferenceValue as ValueContainerUnityObject;
+
 			if (valueContainer != null) {
-				var options = valueContainer.GetKeys ();
-	
-				int currentSelection = options.IndexOf (keyProperty.stringValue);
-	
-				string name = null;
-	
-				if (valueContainer is UnityEngine.Object) {
-					name = (valueContainer as UnityEngine.Object).name;
-				}
-	
-				var modifiedOptons = options.Select (o => {
-					if (string.IsNullOrEmpty(name))
-						return o;
-					return string.Format("{1}.{0}", o, name);
-				}).ToList ();
-	
-				modifiedOptons.Add ("None");
-	
-				if (currentSelection == -1)
-					currentSelection = modifiedOptons.Count - 1;
-	
-				int newSelection = EditorGUI.Popup(keyRect, currentSelection, modifiedOptons.ToArray());
-	
-				if (newSelection != currentSelection) {
-					if (newSelection == modifiedOptons.Count - 1)
-						keyProperty.stringValue = "";
-					else
-						keyProperty.stringValue = options [newSelection];
-				}
+				DrawSelectionFromContainers (keyRect, new List<ValueContainerUnityObject> () {
+					{
+						valueContainer
+					}
+				}, containerProperty, keyProperty);
 			}
 		}
 
@@ -101,7 +77,7 @@ public class ContainerValueUnityPropertyDrawer : PropertyDrawer
 
 		EditorGUI.EndDisabledGroup ();
 
-		valueContainer = containerProperty.objectReferenceValue as ValueContainer;
+		valueContainer = containerProperty.objectReferenceValue as ValueContainerUnityObject;
 
 		if (!string.IsNullOrEmpty (keyProperty.stringValue) && containerProperty.objectReferenceValue != null) {
 			DrawValuePreview (valueRect, valueContainer.Get(keyProperty.stringValue));
@@ -110,16 +86,16 @@ public class ContainerValueUnityPropertyDrawer : PropertyDrawer
 		EditorGUI.EndProperty ();
 	}
 
-	void DrawSelectionFromContainers(Rect position, List<ValueContainerBehaviour> containers, SerializedProperty containerProperty, SerializedProperty keyProperty) {
+	void DrawSelectionFromContainers(Rect position, List<ValueContainerUnityObject> containers, SerializedProperty containerProperty, SerializedProperty keyProperty) {
 
 		var variables = new List<ContainerVariable> ();
 
 		containers.ForEach (c => {
-			c.valueContainer.GetKeys ().ForEach (k => { 
+			c.ValueContainer.GetKeys ().ForEach (k => { 
 				variables.Add (new ContainerVariable () {
-					name = string.Format ("{0}.{1}", c.name, k),
+					name = string.Format ("{0}.{1}", c.Name, k),
 					key = k,
-					container = c
+					container = c as UnityEngine.Object
 				});
 			});
 		});

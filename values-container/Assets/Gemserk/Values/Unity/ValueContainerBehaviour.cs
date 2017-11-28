@@ -3,9 +3,32 @@ using UnityEngine;
 
 namespace Gemserk.Values {
 
-	public class ValueContainerBehaviour : MonoBehaviour, ValueContainer {
+	public interface ValueContainerUnityObject : ValueContainer
+	{
+		string Name {
+			get;
+		}
+
+		ValueContainer ValueContainer {
+			get;
+		}
+	}
+
+	public class ValueContainerBehaviour : MonoBehaviour, ValueContainerUnityObject {
 
 		public ValueContainerUnity valueContainer;
+
+		public string Name {
+			get { 
+				return gameObject.name;
+			}
+		}
+
+		public ValueContainer ValueContainer {
+			get { 
+				return valueContainer;
+			}
+		}
 
 		// ValueContainerDictionary _valueContainer = new ValueContainerDictionary();
 
