@@ -87,6 +87,7 @@ public class ContainerValueUnityPropertyDrawer : PropertyDrawer
 	}
 
 	void DrawSelectionFromContainers(Rect position, List<ValueContainerUnityObject> containers, SerializedProperty containerProperty, SerializedProperty keyProperty) {
+		var contentColor = GUI.contentColor;
 
 		var variables = new List<ContainerVariable> ();
 
@@ -108,8 +109,21 @@ public class ContainerValueUnityPropertyDrawer : PropertyDrawer
 
 		var selection = variables.FindIndex (v => v.container == containerProperty.objectReferenceValue && v.key == keyProperty.stringValue);
 
-		if (selection == -1)
+		if (selection == -1) {
+
+			var tempContainer = containerProperty.objectReferenceValue as ValueContainerUnityObject;
+
+			if (!string.IsNullOrEmpty (keyProperty.stringValue)) {
+				variables.Add (new ContainerVariable () { 
+					name = string.Format ("{0}.{1}", tempContainer.Name, keyProperty.stringValue),
+					key = keyProperty.stringValue,
+					container = null
+				});
+				GUI.contentColor = Color.yellow;
+			}
+
 			selection = variables.Count - 1;
+		}
 
 		var options = variables.Select (v => v.name).ToList ();
 
@@ -125,7 +139,8 @@ public class ContainerValueUnityPropertyDrawer : PropertyDrawer
 				keyProperty.stringValue = newVariable.key;
 			}
 		}
-			
+
+		GUI.contentColor = contentColor;
 	}
 
 	void DrawValuePreview(Rect position, Value value)
