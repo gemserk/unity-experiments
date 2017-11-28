@@ -115,7 +115,7 @@ public class ContainerValueUnityPropertyDrawer : PropertyDrawer
 
 			if (!string.IsNullOrEmpty (keyProperty.stringValue)) {
 				variables.Add (new ContainerVariable () { 
-					name = string.Format ("{0}.{1}", tempContainer.Name, keyProperty.stringValue),
+					name = string.Format ("{0}.{1}", tempContainer != null ? tempContainer.Name : "<Missing>", keyProperty.stringValue),
 					key = keyProperty.stringValue,
 					container = null
 				});
