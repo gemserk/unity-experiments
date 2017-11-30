@@ -15,6 +15,10 @@ public class BehaviourManuallyInjected : MonoBehaviour {
 
 	public InterfaceObjectMegaSystem megaSystem1;
 
+	public InterfaceObject<IMegaSystem> megaSystem3;
+
+	public InterfaceReference megaSystem4;
+
 	public InjectorAsset injector;
 
 	// Use this for initialization
@@ -22,6 +26,8 @@ public class BehaviourManuallyInjected : MonoBehaviour {
 		injector.Inject (this);
 		Debug.Log ("SuperValue: " + megaSystem2.GetSuperValue());
 		Debug.Log ("SuperValue: " + megaSystem1.i.GetSuperValue());
+	
+		Debug.Log ("SuperValue: " + megaSystem4.Get<IMegaSystem>().GetSuperValue());
 	}
 
 }

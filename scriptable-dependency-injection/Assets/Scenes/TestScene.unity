@@ -140,7 +140,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   megaSystem1:
-    reference: {fileID: 11400000, guid: 829ae12be825521439244651991e5f16, type: 2}
+    _object: {fileID: 2085584867}
+  megaSystem4:
+    _object: {fileID: 2085584867}
   injector: {fileID: 11400000, guid: 4be6c62f621a43f47a4d1658b758dbce, type: 2}
 --- !u!4 &667425825
 Transform:
