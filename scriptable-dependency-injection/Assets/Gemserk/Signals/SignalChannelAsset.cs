@@ -5,26 +5,26 @@ public class SignalChannelAsset : ScriptableObject, ISignalChannel
 {
 	// this is just a delegate, to be able to reuse signal logic in other implementations
 
-	SignalChannel _signalChannel;
+	ISignalChannel _delegate;
 
 	void OnEnable()
 	{		
-		_signalChannel = new SignalChannel ();
+		_delegate = new SignalChannel ();
 	}
 
 	public void Trigger(object signal)
 	{
-		_signalChannel.Trigger (signal);
+		_delegate.Trigger (signal);
 	}
 
-	public void Register(SignalHandler handler)
+	public void Register(SignalListener listener)
 	{
-		_signalChannel.Register (handler);
+		_delegate.Register (listener);
 	}
 
-	public void Unregister(SignalHandler handler)
+	public void Unregister(SignalListener listener)
 	{
-		_signalChannel.Unregister (handler);
+		_delegate.Unregister (listener);
 	}
 		
 }

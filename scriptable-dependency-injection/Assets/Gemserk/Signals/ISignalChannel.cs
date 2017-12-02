@@ -3,8 +3,8 @@ public interface ISignalChannel
 {
 	void Trigger(object signal);
 
-	void Register(SignalHandler handler);
+	void Register(SignalListener listener);
 
-	void Unregister(SignalHandler handler);
+	void Unregister(SignalListener listener);
 
 }

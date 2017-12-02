@@ -2,27 +2,27 @@ using System.Collections.Generic;
 
 public class SignalChannel: ISignalChannel
 {
-	readonly List<SignalHandler> _handlers = new List<SignalHandler>();
+	readonly List<SignalListener> _listeners = new List<SignalListener>();
 
 	void OnDisable()
 	{
-		_handlers.Clear ();
+		_listeners.Clear ();
 	}
 
 	public void Trigger(object signal)
 	{
-		foreach (var handler in _handlers) {
+		foreach (var handler in _listeners) {
 			handler.OnSignal (signal);
 		}
 	}
 
-	public void Register(SignalHandler handler)
+	public void Register(SignalListener listener)
 	{
-		_handlers.Add (handler);
+		_listeners.Add (listener);
 	}
 
-	public void Unregister(SignalHandler handler)
+	public void Unregister(SignalListener listener)
 	{
-		_handlers.Remove (handler);
+		_listeners.Remove (listener);
 	}
 }
