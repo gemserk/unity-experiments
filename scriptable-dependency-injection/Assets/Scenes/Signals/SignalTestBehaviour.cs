@@ -1,26 +1,30 @@
 using UnityEngine;
+using Gemserk.Injector;
 
-public class SignalTestBehaviour : MonoBehaviour, SignalHandler<Health> {
+public class SignalTestBehaviour : MonoBehaviour, SignalHandler {
 
-	public SignalUnitDeath signal;
+	public InterfaceReference signal;
 
 	#region SignalHandler implementation
 
-	public void OnSignal (Health t)
+	public void OnSignal (object t)
 	{
-		Debug.Log (t.current);
+		Health h = t as Health;
+		if (h != null) {
+			Debug.Log (h.current);
+		}
 	}
 
 	#endregion
 
 	void OnEnable()
 	{
-		signal.Register (this);
+		signal.Get<ISignalChannel> ().Register (this);
 	}
 
 	void OnDisable()
 	{
-		signal.Unregister (this);
+		signal.Get<ISignalChannel> ().Unregister (this);
 	}
 	
 }

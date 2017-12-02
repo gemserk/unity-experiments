@@ -1,8 +1,5 @@
-using UnityEngine;
-using System.Collections.Generic;
-using System;
 
-public interface SignalHandler<T>
+public interface SignalHandler
 {
-	void OnSignal(T t);
+	void OnSignal(object t);
 }

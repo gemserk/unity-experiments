@@ -1,13 +1,14 @@
 using UnityEngine;
+using Gemserk.Injector;
 
 public class SignalTestGeneratorBehaviour : MonoBehaviour {
 
-	public SignalUnitDeath signal;
+	public InterfaceReference signal;
 
 	void Update()
 	{
 		if (Input.GetKeyUp (KeyCode.Alpha1)) {
-			signal.Trigger (new Health () { 
+			signal.Get<ISignalChannel>().Trigger (new Health () { 
 				current = 50
 			});
 		}
