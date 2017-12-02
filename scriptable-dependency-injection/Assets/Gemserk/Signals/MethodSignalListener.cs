@@ -4,10 +4,13 @@ namespace Gemserk.Signals
 {
 	public class MethodSignalListener : ISignalListener
 	{
+		readonly ISignalChannel _channel;
+
 		readonly Action<object> _callback;
 
-		public MethodSignalListener(Action<object> callback)
+		public MethodSignalListener(ISignalChannel channel, Action<object> callback)
 		{
+			_channel = channel;
 			_callback = callback;
 		}
 
@@ -19,6 +22,16 @@ namespace Gemserk.Signals
 		}
 
 		#endregion
+
+		public void StartListening()
+		{
+			_channel.StartListening (this);
+		}
+
+		public void StopListening()
+		{
+			_channel.StopListening (this);
+		}
 
 	}
 }

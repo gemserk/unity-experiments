@@ -1,39 +1,49 @@
 using UnityEngine;
 using Gemserk.Injector;
 using Gemserk.Signals;
+using UnityEngine.Events;
 
 public class DelegatedSignalTestBehaviour : MonoBehaviour
 {
 	public InterfaceReference signal1;
 
-	MethodSignalListener _mySignalListener;
+	MethodSignalListener _methodSignalListener;
+
+//	public UnityEvent myEvent;
 
 	#region SignalHandler implementation
 
-	void MyCustomMethod (object t)
+	public void MyCustomMethod (object t)
 	{
 		Debug.Log (string.Format("{0} - method signal listener, object: {1}", gameObject.name, t));
 	}
+
+//	public void MethodWithObject(Object o)
+//	{
+//	
+//	}
 
 	#endregion
 
 	void Awake()
 	{
-		_mySignalListener = new MethodSignalListener (MyCustomMethod);
+		_methodSignalListener = new MethodSignalListener (signal1.Get<ISignalChannel>(), MyCustomMethod);
 	}
 
 	void OnEnable()
 	{
-		var signalChannel = signal1.Get<ISignalChannel> ();
-		if (signalChannel != null)
-			signalChannel.StartListening(_mySignalListener);
+		_methodSignalListener.StartListening ();
+//		var signalChannel = signal1.Get<ISignalChannel> ();
+//		if (signalChannel != null)
+//			signalChannel.StartListening(_mySignalListener);
 	}
 
 	void OnDisable()
 	{
-		var signalChannel = signal1.Get<ISignalChannel> ();
-		if (signalChannel != null)
-			signalChannel.StopListening(_mySignalListener);
+		_methodSignalListener.StopListening ();
+//		var signalChannel = signal1.Get<ISignalChannel> ();
+//		if (signalChannel != null)
+//			signalChannel.StopListening(_mySignalListener);
 	}
 
 }
