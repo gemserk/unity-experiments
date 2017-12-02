@@ -1,7 +1,8 @@
 using UnityEngine;
 using Gemserk.Injector;
+using Gemserk.Signals;
 
-public class MultipleSignalsListenerTestBehaviour : MonoBehaviour, SignalListener {
+public class MultipleSignalsListenerTestBehaviour : MonoBehaviour, ISignalListener {
 
 	// se puede encapsular lista de referencias a channels, para el register, etc..
 	public InterfaceReference[] signalChannels;
@@ -43,3 +44,4 @@ public class MultipleSignalsListenerTestBehaviour : MonoBehaviour, SignalListene
 	}
 
 }
+

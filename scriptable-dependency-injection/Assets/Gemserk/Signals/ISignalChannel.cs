@@ -1,10 +1,13 @@
 
-public interface ISignalChannel
+namespace Gemserk.Signals
 {
-	void Trigger(object signal);
+	public interface ISignalChannel
+	{
+		void Trigger(object signal);
 
-	void Register(SignalListener listener);
+		void Register(ISignalListener listener);
 
-	void Unregister(SignalListener listener);
+		void Unregister(ISignalListener listener);
 
+	}
 }

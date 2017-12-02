@@ -1,8 +1,9 @@
 using UnityEngine;
 using Gemserk.Injector;
 using UnityEngine.Serialization;
+using Gemserk.Signals;
 
-public class SignalTestBehaviour : MonoBehaviour, SignalListener {
+public class SignalTestBehaviour : MonoBehaviour, ISignalListener {
 
 	[FormerlySerializedAsAttribute("signal")]
 	public InterfaceReference signalChannel;

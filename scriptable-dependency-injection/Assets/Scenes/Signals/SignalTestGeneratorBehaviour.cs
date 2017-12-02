@@ -1,5 +1,6 @@
 using UnityEngine;
 using Gemserk.Injector;
+using Gemserk.Signals;
 
 public class SignalTestGeneratorBehaviour : MonoBehaviour {
 

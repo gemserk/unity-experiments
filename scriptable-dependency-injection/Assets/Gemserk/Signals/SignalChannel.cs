@@ -1,28 +1,31 @@
 using System.Collections.Generic;
 
-public class SignalChannel: ISignalChannel
+namespace Gemserk.Signals
 {
-	readonly List<SignalListener> _listeners = new List<SignalListener>();
-
-	void OnDisable()
+	public class SignalChannel: ISignalChannel
 	{
-		_listeners.Clear ();
-	}
+		readonly List<ISignalListener> _listeners = new List<ISignalListener>();
 
-	public void Trigger(object signal)
-	{
-		foreach (var handler in _listeners) {
-			handler.OnSignal (signal);
+		void OnDisable()
+		{
+			_listeners.Clear ();
 		}
-	}
 
-	public void Register(SignalListener listener)
-	{
-		_listeners.Add (listener);
-	}
+		public void Trigger(object signal)
+		{
+			foreach (var handler in _listeners) {
+				handler.OnSignal (signal);
+			}
+		}
 
-	public void Unregister(SignalListener listener)
-	{
-		_listeners.Remove (listener);
+		public void Register(ISignalListener listener)
+		{
+			_listeners.Add (listener);
+		}
+
+		public void Unregister(ISignalListener listener)
+		{
+			_listeners.Remove (listener);
+		}
 	}
 }
