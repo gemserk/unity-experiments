@@ -41,27 +41,27 @@ public class ContextProviderAsset : ScriptableObject, ContextProvider {
 
 	#endregion
 
-	void Awake()
-	{
-		Debug.Log ("Scriptable.Awake " + Application.isPlaying);
-	}
-
-	void OnEnable()
-	{
-		Debug.Log ("Scriptable.OnEnable " + Application.isPlaying);
-
-	}
-
-	void OnDisable()
-	{
-		Debug.Log ("Scriptable.OnDisable "+ Application.isPlaying);
-
-	}
-
-	void OnDestroy()
-	{
-		Debug.Log ("Scriptable.OnDestroy" + Application.isPlaying);
-
-	}
+//	void Awake()
+//	{
+//		Debug.Log ("Scriptable.Awake " + Application.isPlaying);
+//	}
+//
+//	void OnEnable()
+//	{
+//		Debug.Log ("Scriptable.OnEnable " + Application.isPlaying);
+//
+//	}
+//
+//	void OnDisable()
+//	{
+//		Debug.Log ("Scriptable.OnDisable "+ Application.isPlaying);
+//
+//	}
+//
+//	void OnDestroy()
+//	{
+//		Debug.Log ("Scriptable.OnDestroy" + Application.isPlaying);
+//
+//	}
 	
 }
