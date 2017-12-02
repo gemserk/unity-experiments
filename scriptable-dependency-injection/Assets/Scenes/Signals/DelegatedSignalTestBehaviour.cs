@@ -26,14 +26,14 @@ public class DelegatedSignalTestBehaviour : MonoBehaviour
 	{
 		var signalChannel = signal1.Get<ISignalChannel> ();
 		if (signalChannel != null)
-			signalChannel.Register(_mySignalListener);
+			signalChannel.StartListening(_mySignalListener);
 	}
 
 	void OnDisable()
 	{
 		var signalChannel = signal1.Get<ISignalChannel> ();
 		if (signalChannel != null)
-			signalChannel.Unregister(_mySignalListener);
+			signalChannel.StopListening(_mySignalListener);
 	}
 
 }

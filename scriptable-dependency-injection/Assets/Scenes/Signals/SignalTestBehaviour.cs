@@ -29,13 +29,13 @@ public class SignalTestBehaviour : MonoBehaviour, ISignalListener {
 	void OnEnable()
 	{
 		if (signalChannel.Get<ISignalChannel>() != null)
-			signalChannel.Get<ISignalChannel> ().Register (this);
+			signalChannel.Get<ISignalChannel> ().StartListening (this);
 	}
 
 	void OnDisable()
 	{
 		if (signalChannel.Get<ISignalChannel>() != null)
-			signalChannel.Get<ISignalChannel> ().Unregister (this);
+			signalChannel.Get<ISignalChannel> ().StopListening (this);
 	}
 	
 }

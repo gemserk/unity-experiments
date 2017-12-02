@@ -18,12 +18,12 @@ namespace Gemserk.Signals
 			}
 		}
 
-		public void Register(ISignalListener listener)
+		public void StartListening(ISignalListener listener)
 		{
 			_listeners.Add (listener);
 		}
 
-		public void Unregister(ISignalListener listener)
+		public void StopListening(ISignalListener listener)
 		{
 			_listeners.Remove (listener);
 		}

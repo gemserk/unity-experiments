@@ -17,14 +17,14 @@ namespace Gemserk.Signals
 			_delegate.Signal (signal);
 		}
 
-		public void Register(ISignalListener listener)
+		public void StartListening(ISignalListener listener)
 		{
-			_delegate.Register (listener);
+			_delegate.StartListening (listener);
 		}
 
-		public void Unregister(ISignalListener listener)
+		public void StopListening(ISignalListener listener)
 		{
-			_delegate.Unregister (listener);
+			_delegate.StopListening (listener);
 		}
 
 	}
