@@ -25,7 +25,7 @@ public class BehaviourManuallyInjected : MonoBehaviour {
 	void Start () {
 		injector.Inject (this);
 		Debug.Log ("SuperValue: " + megaSystem2.GetSuperValue());
-		Debug.Log ("SuperValue: " + megaSystem1.i.GetSuperValue());
+		Debug.Log ("SuperValue: " + megaSystem1.Get().GetSuperValue());
 	
 		Debug.Log ("SuperValue: " + megaSystem4.Get<IMegaSystem>().GetSuperValue());
 	}

@@ -17,9 +17,7 @@ public class GameModeController : MonoBehaviour {
 	GameObject _mainCharacter;
 
 	void Start () {
-		_charactedDiedListener = new MethodSignalListener (charactedDiedChannel.i, OnCharacterDied);
-		_charactedDiedListener.StartListening ();
-	
+		_charactedDiedListener = new MethodSignalListener (charactedDiedChannel.Get(), OnCharacterDied);
 		Restart ();
 	}
 
@@ -33,7 +31,7 @@ public class GameModeController : MonoBehaviour {
 		_mainCharacter = GameObject.Instantiate(mainCharacterPrefab);
 		_mainCharacter.transform.position = startPosition.position;
 
-		gameStartedChannel.i.Signal (this);
+		gameStartedChannel.Get().Signal (this);
 	}
 
 	void OnCharacterDied (object character)
@@ -55,7 +53,7 @@ public class GameModeController : MonoBehaviour {
 
 		// do stuff
 
-		gameOverChannel.i.Signal (this);
+		gameOverChannel.Get().Signal (this);
 
 		yield return new WaitForSeconds (1.0f);
 	

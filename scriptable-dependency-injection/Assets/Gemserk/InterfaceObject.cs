@@ -10,18 +10,16 @@ namespace Gemserk.Injector
 
 		T _instance;
 
-		public T i {
-			get {
-				if (_instance == null) {
-					var go = _object as GameObject;
-					if (go != null) {
-						_instance = go.GetComponentInChildren<T> ();
-					} else {
-						_instance = _object as T;
-					}
+		public T Get() {
+			if (_instance == null) {
+				var go = _object as GameObject;
+				if (go != null) {
+					_instance = go.GetComponentInChildren<T> ();
+				} else {
+					_instance = _object as T;
 				}
-				return _instance;
 			}
+			return _instance;
 		}
 	}
 		
