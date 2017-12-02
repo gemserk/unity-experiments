@@ -1,18 +1,12 @@
 ﻿using System.Collections;
 using UnityEngine;
-using Gemserk.Injector;
 using Gemserk.Signals;
-using System;
 
 public class GameModeController : MonoBehaviour {
 
-	public InterfaceReference gameStartedChannel;
-	public InterfaceReference gameOverChannel;
-	public InterfaceReference charactedDiedChannel;
-
-	ISignalChannel _gameStartedChannel;
-	ISignalChannel _gameOverChannel;
-	ISignalChannel _characterDiedChannel;
+	public Example1SignalChannel gameStartedChannel;
+	public Example1SignalChannel gameOverChannel;
+	public Example1SignalChannel charactedDiedChannel;
 
 	MethodSignalListener _charactedDiedListener;
 
@@ -23,11 +17,7 @@ public class GameModeController : MonoBehaviour {
 	GameObject _mainCharacter;
 
 	void Start () {
-		_gameStartedChannel = gameStartedChannel.Get<ISignalChannel> ();
-		_gameOverChannel = gameOverChannel.Get<ISignalChannel> ();
-		_characterDiedChannel = charactedDiedChannel.Get<ISignalChannel> ();
-
-		_charactedDiedListener = new MethodSignalListener (_characterDiedChannel, OnCharacterDied);
+		_charactedDiedListener = new MethodSignalListener (charactedDiedChannel.i, OnCharacterDied);
 		_charactedDiedListener.StartListening ();
 	
 		Restart ();
@@ -43,7 +33,7 @@ public class GameModeController : MonoBehaviour {
 		_mainCharacter = GameObject.Instantiate(mainCharacterPrefab);
 		_mainCharacter.transform.position = startPosition.position;
 
-		_gameStartedChannel.Signal (this);
+		gameStartedChannel.i.Signal (this);
 	}
 
 	void OnCharacterDied (object character)
@@ -65,7 +55,7 @@ public class GameModeController : MonoBehaviour {
 
 		// do stuff
 
-		_gameOverChannel.Signal (this);
+		gameOverChannel.i.Signal (this);
 
 		yield return new WaitForSeconds (1.0f);
 	
