@@ -19,12 +19,14 @@ public class SignalTestBehaviour : MonoBehaviour, SignalHandler {
 
 	void OnEnable()
 	{
-		signal.Get<ISignalChannel> ().Register (this);
+		if (signal.Get<ISignalChannel>() != null)
+			signal.Get<ISignalChannel> ().Register (this);
 	}
 
 	void OnDisable()
 	{
-		signal.Get<ISignalChannel> ().Unregister (this);
+		if (signal.Get<ISignalChannel>() != null)
+			signal.Get<ISignalChannel> ().Unregister (this);
 	}
 	
 }

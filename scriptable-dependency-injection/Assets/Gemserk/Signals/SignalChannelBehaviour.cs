@@ -1,16 +1,10 @@
-﻿using UnityEngine;
+using UnityEngine;
 
-[CreateAssetMenu(menuName="Signals/Signal Channel")]
-public class SignalChannelAsset : ScriptableObject, ISignalChannel
+public class SignalChannelBehaviour : MonoBehaviour, ISignalChannel
 {
 	// this is just a delegate, to be able to reuse signal logic in other implementations
 
-	SignalChannel _signalChannel;
-
-	void OnEnable()
-	{		
-		_signalChannel = new SignalChannel ();
-	}
+	readonly SignalChannel _signalChannel = new SignalChannel();
 
 	public void Trigger(object signal)
 	{
@@ -26,6 +20,5 @@ public class SignalChannelAsset : ScriptableObject, ISignalChannel
 	{
 		_signalChannel.Unregister (handler);
 	}
-		
+
 }
-	
