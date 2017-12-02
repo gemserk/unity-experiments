@@ -4,13 +4,11 @@ namespace Gemserk.Signals
 {
 	public class SignalChannelBehaviour : MonoBehaviour, ISignalChannel
 	{
-		// this is just a delegate, to be able to reuse signal logic in other implementations
-
 		readonly ISignalChannel _delegate = new SignalChannel();
 
-		public void Trigger(object signal)
+		public void Signal(object signal)
 		{
-			_delegate.Trigger (signal);
+			_delegate.Signal (signal);
 		}
 
 		public void Register(ISignalListener handler)

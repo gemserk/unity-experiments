@@ -3,11 +3,10 @@ namespace Gemserk.Signals
 {
 	public interface ISignalChannel
 	{
-		void Trigger(object signal);
+		void Signal(object signal);
 
 		void Register(ISignalListener listener);
 
 		void Unregister(ISignalListener listener);
-
 	}
 }

@@ -12,7 +12,7 @@ public class SignalTestGeneratorBehaviour : MonoBehaviour {
 	void Update()
 	{
 		if (Input.GetKeyUp (testKey)) {
-			signal.Get<ISignalChannel>().Trigger (new Health () { 
+			signal.Get<ISignalChannel>().Signal (new Health () { 
 				unit = this.gameObject,
 				current = health
 			});

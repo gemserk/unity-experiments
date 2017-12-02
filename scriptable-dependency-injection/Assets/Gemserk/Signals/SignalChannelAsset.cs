@@ -5,8 +5,6 @@ namespace Gemserk.Signals
 	[CreateAssetMenu(menuName="Signals/Signal Channel")]
 	public class SignalChannelAsset : ScriptableObject, ISignalChannel
 	{
-		// this is just a delegate, to be able to reuse signal logic in other implementations
-
 		ISignalChannel _delegate;
 
 		void OnEnable()
@@ -14,9 +12,9 @@ namespace Gemserk.Signals
 			_delegate = new SignalChannel ();
 		}
 
-		public void Trigger(object signal)
+		public void Signal(object signal)
 		{
-			_delegate.Trigger (signal);
+			_delegate.Signal (signal);
 		}
 
 		public void Register(ISignalListener listener)

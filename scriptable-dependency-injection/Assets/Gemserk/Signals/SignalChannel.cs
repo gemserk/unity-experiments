@@ -11,7 +11,7 @@ namespace Gemserk.Signals
 			_listeners.Clear ();
 		}
 
-		public void Trigger(object signal)
+		public void Signal(object signal)
 		{
 			foreach (var handler in _listeners) {
 				handler.OnSignal (signal);
