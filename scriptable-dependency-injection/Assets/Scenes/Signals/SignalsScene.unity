@@ -140,7 +140,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   signal:
-    _object: {fileID: 932583058}
+    _object: {fileID: 11400000, guid: 03be5593ae60d5b499068a93fc46b55f, type: 2}
+  unit: {fileID: 1702889425}
 --- !u!4 &388467924
 Transform:
   m_ObjectHideFlags: 0
@@ -274,6 +275,49 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1104593116
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1104593118}
+  - component: {fileID: 1104593117}
+  m_Layer: 0
+  m_Name: SignalListener3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1104593117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1104593116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d74e1a9eec00b104bb5997b0c7457d88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  signal:
+    _object: {fileID: 11400000, guid: 03be5593ae60d5b499068a93fc46b55f, type: 2}
+  unit: {fileID: 0}
+--- !u!4 &1104593118
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1104593116}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1205469053
 GameObject:
   m_ObjectHideFlags: 0
@@ -302,13 +346,58 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   signal:
-    _object: {fileID: 932583058}
+    _object: {fileID: 11400000, guid: 03be5593ae60d5b499068a93fc46b55f, type: 2}
+  unit: {fileID: 1237623800}
 --- !u!4 &1205469055
 Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1205469053}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1237623800
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1237623802}
+  - component: {fileID: 1237623801}
+  m_Layer: 0
+  m_Name: Unit2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1237623801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1237623800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37040230f2fa0ba46916e50687efb641, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  signal:
+    _object: {fileID: 11400000, guid: 03be5593ae60d5b499068a93fc46b55f, type: 2}
+  testKey: 50
+  health: 1000
+--- !u!4 &1237623802
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1237623800}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -343,7 +432,7 @@ Transform:
   m_Children:
   - {fileID: 932583060}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1702889425
 GameObject:
@@ -355,7 +444,7 @@ GameObject:
   - component: {fileID: 1702889427}
   - component: {fileID: 1702889426}
   m_Layer: 0
-  m_Name: SignalGenerator
+  m_Name: Unit1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -373,7 +462,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   signal:
-    _object: {fileID: 932583058}
+    _object: {fileID: 11400000, guid: 03be5593ae60d5b499068a93fc46b55f, type: 2}
+  testKey: 49
+  health: 500
 --- !u!4 &1702889427
 Transform:
   m_ObjectHideFlags: 0

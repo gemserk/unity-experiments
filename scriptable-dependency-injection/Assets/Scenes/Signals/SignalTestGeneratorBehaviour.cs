@@ -5,11 +5,15 @@ public class SignalTestGeneratorBehaviour : MonoBehaviour {
 
 	public InterfaceReference signal;
 
+	public KeyCode testKey = KeyCode.Alpha1;
+	public float health;
+
 	void Update()
 	{
-		if (Input.GetKeyUp (KeyCode.Alpha1)) {
+		if (Input.GetKeyUp (testKey)) {
 			signal.Get<ISignalChannel>().Trigger (new Health () { 
-				current = 50
+				unit = this.gameObject,
+				current = health
 			});
 		}
 	}
