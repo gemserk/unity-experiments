@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
 using Gemserk.Signals;
-using Gemserk;
 
 public class GameModeController : MonoBehaviour {
 
@@ -9,7 +8,7 @@ public class GameModeController : MonoBehaviour {
 	public Example1SignalChannel gameOverChannel;
 	public Example1SignalChannel charactedDiedChannel;
 
-	public InterfaceReference characterLoseHealthChannel;
+	public Example1SignalChannelHealthReference characterLoseHealthChannel;
 
 	MethodSignalListener<object> _charactedDiedListener;
 
@@ -30,7 +29,7 @@ public class GameModeController : MonoBehaviour {
 
 	void Start () {
 		_charactedDiedListener = new MethodSignalListener<object> (charactedDiedChannel.Get(), OnCharacterDied);
-		_characterLoseHealthListener = new MethodSignalListener<Health> (characterLoseHealthChannel.Get<ISignalChannel<Health>>(), OnCharacterLoseHealth);
+		_characterLoseHealthListener = new MethodSignalListener<Health> (characterLoseHealthChannel.Get(), OnCharacterLoseHealth);
 		Restart ();
 
 //		pipote = new Example1Event ();
