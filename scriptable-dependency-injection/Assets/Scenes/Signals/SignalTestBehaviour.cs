@@ -1,7 +1,7 @@
 using UnityEngine;
-using Gemserk.Injector;
 using UnityEngine.Serialization;
 using Gemserk.Signals;
+using Gemserk;
 
 public class SignalTestBehaviour : MonoBehaviour, ISignalListener {
 

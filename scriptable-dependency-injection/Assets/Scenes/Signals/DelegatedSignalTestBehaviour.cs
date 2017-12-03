@@ -1,7 +1,6 @@
 using UnityEngine;
-using Gemserk.Injector;
 using Gemserk.Signals;
-using UnityEngine.Events;
+using Gemserk;
 
 public class DelegatedSignalTestBehaviour : MonoBehaviour
 {

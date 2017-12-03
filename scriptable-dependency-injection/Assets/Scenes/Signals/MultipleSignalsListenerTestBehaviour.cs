@@ -1,6 +1,6 @@
 using UnityEngine;
-using Gemserk.Injector;
 using Gemserk.Signals;
+using Gemserk;
 
 public class MultipleSignalsListenerTestBehaviour : MonoBehaviour, ISignalListener {
 

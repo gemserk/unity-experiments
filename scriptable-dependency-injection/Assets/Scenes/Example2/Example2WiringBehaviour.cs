@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
-using Gemserk.Injector;
 using Gemserk.Signals;
 using UnityEngine.Events;
 using System;
+using Gemserk;
 
 public class Example2WiringBehaviour : MonoBehaviour, ISignalListener {
 

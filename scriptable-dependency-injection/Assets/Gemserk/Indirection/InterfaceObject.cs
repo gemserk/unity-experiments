@@ -1,7 +1,7 @@
 using UnityEngine;
 using System;
 
-namespace Gemserk.Injector
+namespace Gemserk
 {
 	[Serializable]
 	public class InterfaceObject<T> where T : class

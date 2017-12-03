@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
-using Gemserk.Injector;
 using Gemserk.Signals;
+using Gemserk;
 
 public class Example2SignalGenerator : MonoBehaviour {
 

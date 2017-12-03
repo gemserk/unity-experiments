@@ -1,6 +1,6 @@
 using UnityEngine;
 using Gemserk.Signals;
-using Gemserk.Injector;
+using Gemserk;
 
 public class DebugLogChannelBehaviour : MonoBehaviour, ISignalListener
 {

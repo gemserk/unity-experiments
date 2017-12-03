@@ -1,6 +1,7 @@
 using UnityEngine;
 using Gemserk.Injector;
 using System;
+using Gemserk;
 
 [Serializable]
 public class InterfaceObjectMegaSystem : InterfaceObject<IMegaSystem>
