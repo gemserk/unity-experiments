@@ -2,7 +2,7 @@ using System;
 
 namespace Gemserk.Signals
 {
-	public class MethodSignalListener<T> : ISignalListenerGeneric<T> where T : class 
+	public class MethodSignalListener<T> : ISignalListener<T> where T : class 
 	{
 		readonly ISignalChannel<T> _channel;
 

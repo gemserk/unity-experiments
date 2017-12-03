@@ -4,7 +4,7 @@ namespace Gemserk.Signals
 {
 	public class SignalChannel<T> : ISignalChannel<T> where T : class
  	{
-		readonly List<ISignalListenerGeneric<T>> _listeners = new List<ISignalListenerGeneric<T>>();
+		readonly List<ISignalListener<T>> _listeners = new List<ISignalListener<T>>();
 
 		void OnDisable()
 		{
@@ -18,12 +18,12 @@ namespace Gemserk.Signals
 			}
 		}
 
-		public void StartListening(ISignalListenerGeneric<T> listener)
+		public void StartListening(ISignalListener<T> listener)
 		{
 			_listeners.Add (listener);
 		}
 
-		public void StopListening(ISignalListenerGeneric<T> listener)
+		public void StopListening(ISignalListener<T> listener)
 		{
 			_listeners.Remove (listener);
 		}

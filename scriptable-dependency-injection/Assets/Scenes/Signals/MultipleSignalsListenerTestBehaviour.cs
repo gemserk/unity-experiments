@@ -1,7 +1,7 @@
 using UnityEngine;
 using Gemserk.Signals;
 
-public class MultipleSignalsListenerTestBehaviour : MonoBehaviour, ISignalListener {
+public class MultipleSignalsListenerTestBehaviour : MonoBehaviour, ISignalListener<object> {
 
 	public SignalChannelReference[] signalChannels;
 

@@ -12,12 +12,12 @@ public class Example1SignalChannelHealth : ScriptableObject, ISignalChannel<Heal
 		_delegate.Signal (signal);
 	}
 
-	public void StartListening (ISignalListenerGeneric<Health> listener)
+	public void StartListening (ISignalListener<Health> listener)
 	{
 		_delegate.StartListening (listener);
 	}
 
-	public void StopListening (ISignalListenerGeneric<Health> listener)
+	public void StopListening (ISignalListener<Health> listener)
 	{
 		_delegate.StopListening (listener);
 	}

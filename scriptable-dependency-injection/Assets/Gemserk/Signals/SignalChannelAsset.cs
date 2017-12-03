@@ -19,12 +19,12 @@ namespace Gemserk.Signals
 			_delegate.Signal (signal);
 		}
 			
-		public void StartListening (ISignalListenerGeneric<object> listener)
+		public void StartListening (ISignalListener<object> listener)
 		{
 			_delegate.StartListening (listener);
 		}
 
-		public void StopListening (ISignalListenerGeneric<object> listener)
+		public void StopListening (ISignalListener<object> listener)
 		{
 			_delegate.StopListening (listener);
 		}

@@ -1,7 +1,7 @@
 using UnityEngine;
 using Gemserk.Signals;
 
-public class DebugLogChannelBehaviour : MonoBehaviour, ISignalListener
+public class DebugLogChannelBehaviour : MonoBehaviour, ISignalListener<object>
 {
 	public SignalChannelReference channel;
 

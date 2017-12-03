@@ -5,8 +5,8 @@ namespace Gemserk.Signals
 	{
 		void Signal(T signal);
 
-		void StartListening(ISignalListenerGeneric<T> listener);
+		void StartListening(ISignalListener<T> listener);
 
-		void StopListening(ISignalListenerGeneric<T> listener);
+		void StopListening(ISignalListener<T> listener);
 	}
 }

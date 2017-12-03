@@ -4,7 +4,7 @@ using UnityEngine.Events;
 using System;
 using Gemserk;
 
-public class Example2WiringBehaviour : MonoBehaviour, ISignalListener {
+public class Example2WiringBehaviour : MonoBehaviour, ISignalListener<object> {
 
 	[SerializableAttribute]
 	public class UnityEventObject : UnityEvent<UnityEngine.Object>
