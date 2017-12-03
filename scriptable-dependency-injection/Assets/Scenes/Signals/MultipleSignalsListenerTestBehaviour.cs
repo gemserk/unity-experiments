@@ -1,10 +1,9 @@
 using UnityEngine;
 using Gemserk.Signals;
-using Gemserk;
 
 public class MultipleSignalsListenerTestBehaviour : MonoBehaviour, ISignalListener {
 
-	public InterfaceReference[] signalChannels;
+	public SignalChannelReference[] signalChannels;
 
 	#region SignalHandler implementation
 
@@ -18,16 +17,16 @@ public class MultipleSignalsListenerTestBehaviour : MonoBehaviour, ISignalListen
 	void OnEnable()
 	{
 		foreach (var signalChannel in signalChannels) {
-			if (signalChannel.Get<ISignalChannel>() != null)
-				signalChannel.Get<ISignalChannel> ().StartListening (this);			
+			if (signalChannel.Get() != null)
+				signalChannel.Get().StartListening (this);			
 		}
 	}
 
 	void OnDisable()
 	{
 		foreach (var signalChannel in signalChannels) {
-			if (signalChannel.Get<ISignalChannel>() != null)
-				signalChannel.Get<ISignalChannel> ().StopListening (this);			
+			if (signalChannel.Get() != null)
+				signalChannel.Get().StopListening (this);			
 		}
 	}
 

@@ -1,14 +1,11 @@
 using UnityEngine;
 using Gemserk.Signals;
-using Gemserk;
 
 public class DelegatedSignalTestBehaviour : MonoBehaviour
 {
-	public InterfaceReference signal1;
+	public SignalChannelReference signal1;
 
-	MethodSignalListener _methodSignalListener;
-
-//	public UnityEvent myEvent;
+	MethodSignalListener<object> _methodSignalListener;
 
 	#region SignalHandler implementation
 
@@ -16,33 +13,21 @@ public class DelegatedSignalTestBehaviour : MonoBehaviour
 	{
 		Debug.Log (string.Format("{0} - method signal listener, object: {1}", gameObject.name, t));
 	}
-
-//	public void MethodWithObject(Object o)
-//	{
-//	
-//	}
-
 	#endregion
 
 	void Awake()
 	{
-		_methodSignalListener = new MethodSignalListener (signal1.Get<ISignalChannel>(), MyCustomMethod);
+		_methodSignalListener = new MethodSignalListener<object> (signal1.Get(), MyCustomMethod);
 	}
 
 	void OnEnable()
 	{
 		_methodSignalListener.StartListening ();
-//		var signalChannel = signal1.Get<ISignalChannel> ();
-//		if (signalChannel != null)
-//			signalChannel.StartListening(_mySignalListener);
 	}
 
 	void OnDisable()
 	{
 		_methodSignalListener.StopListening ();
-//		var signalChannel = signal1.Get<ISignalChannel> ();
-//		if (signalChannel != null)
-//			signalChannel.StopListening(_mySignalListener);
 	}
 
 }

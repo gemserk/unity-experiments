@@ -28,7 +28,7 @@ public class GameCharacter : MonoBehaviour
 				charactedDiedChannel.Get ().Signal (this.gameObject);
 			} else {
 			
-				characterLoseHealthChannel.Get<ISignalChannelGeneric<Health>> ().Signal(new Health() {
+				characterLoseHealthChannel.Get<ISignalChannel<Health>> ().Signal(new Health() {
 					current = totalHealth,
 					unit = this.gameObject
 				});

@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace Gemserk.Signals
 {
-	public class SignalChannel<T> : ISignalChannelGeneric<T> where T : class
+	public class SignalChannel<T> : ISignalChannel<T> where T : class
  	{
 		readonly List<ISignalListenerGeneric<T>> _listeners = new List<ISignalListenerGeneric<T>>();
 

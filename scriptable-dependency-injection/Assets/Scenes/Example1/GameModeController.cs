@@ -11,9 +11,9 @@ public class GameModeController : MonoBehaviour {
 
 	public InterfaceReference characterLoseHealthChannel;
 
-	MethodSignalListenerGeneric<object> _charactedDiedListener;
+	MethodSignalListener<object> _charactedDiedListener;
 
-	MethodSignalListenerGeneric<Health> _characterLoseHealthListener;
+	MethodSignalListener<Health> _characterLoseHealthListener;
 
 	public Transform startPosition;
 
@@ -29,8 +29,8 @@ public class GameModeController : MonoBehaviour {
 //	}
 
 	void Start () {
-		_charactedDiedListener = new MethodSignalListener (charactedDiedChannel.Get(), OnCharacterDied);
-		_characterLoseHealthListener = new MethodSignalListenerGeneric<Health> (characterLoseHealthChannel.Get<ISignalChannelGeneric<Health>>(), OnCharacterLoseHealth);
+		_charactedDiedListener = new MethodSignalListener<object> (charactedDiedChannel.Get(), OnCharacterDied);
+		_characterLoseHealthListener = new MethodSignalListener<Health> (characterLoseHealthChannel.Get<ISignalChannel<Health>>(), OnCharacterLoseHealth);
 		Restart ();
 
 //		pipote = new Example1Event ();

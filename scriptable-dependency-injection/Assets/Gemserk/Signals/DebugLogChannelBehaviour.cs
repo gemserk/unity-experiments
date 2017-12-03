@@ -1,21 +1,20 @@
 using UnityEngine;
 using Gemserk.Signals;
-using Gemserk;
 
 public class DebugLogChannelBehaviour : MonoBehaviour, ISignalListener
 {
-	public InterfaceReference channel;
+	public SignalChannelReference channel;
 
 	public string message;
 
 	void OnEnable()
 	{
-		channel.Get<ISignalChannel>().StartListening (this);
+		channel.Get().StartListening (this);
 	}
 
 	void OnDisable()
 	{
-		channel.Get<ISignalChannel>().StopListening (this);
+		channel.Get().StopListening (this);
 	}
 
 	#region ISignalListener implementation

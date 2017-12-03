@@ -12,7 +12,7 @@ public class Example2WiringBehaviour : MonoBehaviour, ISignalListener {
 		
 	}
 
-	public InterfaceReference signal;
+	public SignalChannelReference signal;
 
 	public UnityEventObject wiredMethods;
 
@@ -27,7 +27,7 @@ public class Example2WiringBehaviour : MonoBehaviour, ISignalListener {
 
 	// Use this for initialization
 	void Start () {
-		signal.Get<ISignalChannel> ().StartListening (this);
+		signal.Get().StartListening (this);
 	}
 
 }

@@ -3,8 +3,10 @@ using UnityEngine.Events;
 
 namespace Gemserk.Signals
 {
-	[CreateAssetMenu(menuName="Example1/Unity Event Channel")]
-	public class SignalChannelUnityEventAsset : ScriptableObject, ISignalChannel
+	// TODO: implement base class generic and custom with type object
+
+	[CreateAssetMenu(menuName="Gemserk/Unity Event Channel")]
+	public class SignalChannelUnityEventAsset : ScriptableObject, ISignalChannel<object>
 	{
 		class UnityEventSignal : UnityEvent<object>
 		{

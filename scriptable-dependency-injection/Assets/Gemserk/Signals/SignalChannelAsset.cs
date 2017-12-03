@@ -2,10 +2,12 @@
 
 namespace Gemserk.Signals
 {
+	// TODO: extract generic to reimplement with custom type
+
 	[CreateAssetMenu(menuName="Signals/Signal Channel")]
-	public class SignalChannelAsset : ScriptableObject, ISignalChannel
+	public class SignalChannelAsset : ScriptableObject, ISignalChannel<object>
 	{
-		ISignalChannelGeneric<object> _delegate;
+		ISignalChannel<object> _delegate;
 
 		void OnEnable()
 		{		

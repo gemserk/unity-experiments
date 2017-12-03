@@ -4,7 +4,7 @@ using Gemserk;
 
 public class SignalTestGeneratorBehaviour : MonoBehaviour {
 
-	public InterfaceReference signal;
+	public SignalChannelReference signal;
 
 	public KeyCode testKey = KeyCode.Alpha1;
 	public float health;
@@ -12,7 +12,7 @@ public class SignalTestGeneratorBehaviour : MonoBehaviour {
 	void Update()
 	{
 		if (Input.GetKeyUp (testKey)) {
-			signal.Get<ISignalChannel>().Signal (new Health () { 
+			signal.Get().Signal (new Health () { 
 				unit = this.gameObject,
 				current = health
 			});

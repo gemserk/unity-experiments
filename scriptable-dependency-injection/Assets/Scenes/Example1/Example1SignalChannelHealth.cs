@@ -2,7 +2,7 @@ using Gemserk.Signals;
 using UnityEngine;
 
 [CreateAssetMenu(menuName="Example1/Health Signal")]
-public class Example1SignalChannelHealth : ScriptableObject, ISignalChannelGeneric<Health>
+public class Example1SignalChannelHealth : ScriptableObject, ISignalChannel<Health>
 {
 	readonly SignalChannel<Health> _delegate = new SignalChannel<Health>();
 

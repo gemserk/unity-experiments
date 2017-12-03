@@ -3,7 +3,7 @@ using System;
 using Gemserk;
 
 [SerializableAttribute]
-public class Example1SignalChannel : InterfaceObject<ISignalChannel>
+public class Example1SignalChannel : InterfaceObject<ISignalChannel<object>>
 {
 	
 }

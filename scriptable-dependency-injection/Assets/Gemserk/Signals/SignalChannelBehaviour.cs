@@ -2,9 +2,11 @@ using UnityEngine;
 
 namespace Gemserk.Signals
 {
-	public class SignalChannelBehaviour : MonoBehaviour, ISignalChannel
+	// TODO: extract generic base class and implement one with object type
+	
+	public class SignalChannelBehaviour : MonoBehaviour, ISignalChannel<object>
 	{
-		readonly ISignalChannelGeneric<object> _delegate = new SignalChannel<object>();
+		readonly ISignalChannel<object> _delegate = new SignalChannel<object>();
 
 		public void Signal(object signal)
 		{

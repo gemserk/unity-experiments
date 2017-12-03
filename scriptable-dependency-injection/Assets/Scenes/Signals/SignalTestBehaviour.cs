@@ -1,12 +1,11 @@
 using UnityEngine;
 using UnityEngine.Serialization;
 using Gemserk.Signals;
-using Gemserk;
 
 public class SignalTestBehaviour : MonoBehaviour, ISignalListener {
 
 	[FormerlySerializedAsAttribute("signal")]
-	public InterfaceReference signalChannel;
+	public SignalChannelReference signalChannel;
 
 	public GameObject unit;
 
@@ -28,14 +27,14 @@ public class SignalTestBehaviour : MonoBehaviour, ISignalListener {
 
 	void OnEnable()
 	{
-		if (signalChannel.Get<ISignalChannel>() != null)
-			signalChannel.Get<ISignalChannel> ().StartListening (this);
+		if (signalChannel.Get() != null)
+			signalChannel.Get().StartListening (this);
 	}
 
 	void OnDisable()
 	{
-		if (signalChannel.Get<ISignalChannel>() != null)
-			signalChannel.Get<ISignalChannel> ().StopListening (this);
+		if (signalChannel.Get() != null)
+			signalChannel.Get().StopListening (this);
 	}
 	
 }
