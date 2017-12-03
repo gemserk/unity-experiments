@@ -1,19 +1,12 @@
 using UnityEngine;
-using Gemserk.Injector;
-using Gemserk.Signals;
 
 public class GameCharacter : MonoBehaviour
 {
-	public InterfaceReference charactedDiedChannel;
-	ISignalChannel _characterDiedChannel;
+	public Example1SignalChannel charactedDiedChannel;
 
 	bool _isDead;
 
 	public KeyCode killKey = KeyCode.Alpha1;
-
-	void Start () {
-		_characterDiedChannel = charactedDiedChannel.Get<ISignalChannel> ();
-	}
 
 	void Update()
 	{
@@ -22,7 +15,7 @@ public class GameCharacter : MonoBehaviour
 		
 		if (Input.GetKeyUp(killKey)) {
 			_isDead = true;
-			_characterDiedChannel.Signal (this.gameObject);
+			charactedDiedChannel.Get().Signal (this.gameObject);
 		}
 	}
 }

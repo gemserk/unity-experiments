@@ -16,9 +16,24 @@ public class GameModeController : MonoBehaviour {
 
 	GameObject _mainCharacter;
 
+//	Example1Event pipote = new Example1Event();
+
+//	public void PipoteCall(object obj)
+//	{
+//		
+//	}
+
 	void Start () {
 		_charactedDiedListener = new MethodSignalListener (charactedDiedChannel.Get(), OnCharacterDied);
 		Restart ();
+
+//		pipote = new Example1Event ();
+
+//		pipote.AddListener (delegate(object arg0) {
+//			Debug.Log((arg0 as GameObject).name);
+//		});
+//
+//		pipote.Invoke (this.gameObject);
 	}
 
 	void Restart()
