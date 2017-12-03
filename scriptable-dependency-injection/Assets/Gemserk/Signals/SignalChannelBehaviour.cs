@@ -4,7 +4,7 @@ namespace Gemserk.Signals
 {
 	public class SignalChannelBehaviour : MonoBehaviour, ISignalChannel
 	{
-		readonly ISignalChannelGeneric<object> _delegate = new SignalChannel();
+		readonly ISignalChannelGeneric<object> _delegate = new SignalChannel<object>();
 
 		public void Signal(object signal)
 		{

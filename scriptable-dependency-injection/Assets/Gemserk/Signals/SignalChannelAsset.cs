@@ -9,7 +9,7 @@ namespace Gemserk.Signals
 
 		void OnEnable()
 		{		
-			_delegate = new SignalChannel ();
+			_delegate = new SignalChannel<object> ();
 		}
 
 		public void Signal(object signal)

@@ -4,7 +4,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName="Example1/Health Signal")]
 public class Example1SignalChannelHealth : ScriptableObject, ISignalChannelGeneric<Health>
 {
-	readonly SignalChannelGeneric<Health> _delegate = new SignalChannelGeneric<Health>();
+	readonly SignalChannel<Health> _delegate = new SignalChannel<Health>();
 
 	#region ISignalChannelGeneric implementation
 	public void Signal (Health signal)
