@@ -83,6 +83,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   charactedDiedChannel:
     _object: {fileID: 11400000, guid: 093672c48ffbadb4596ff8d1ebd860b7, type: 2}
+  characterLoseHealthChannel:
+    _object: {fileID: 11400000, guid: 439d27ee815b24d45b06bc693edce974, type: 2}
+  totalHealth: 100
+  damage: 20
   killKey: 49
 --- !u!212 &212299529023343898
 SpriteRenderer:

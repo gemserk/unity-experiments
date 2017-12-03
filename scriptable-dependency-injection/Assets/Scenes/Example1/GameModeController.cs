@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 using Gemserk.Signals;
+using Gemserk;
 
 public class GameModeController : MonoBehaviour {
 
@@ -8,7 +9,11 @@ public class GameModeController : MonoBehaviour {
 	public Example1SignalChannel gameOverChannel;
 	public Example1SignalChannel charactedDiedChannel;
 
-	MethodSignalListener _charactedDiedListener;
+	public InterfaceReference characterLoseHealthChannel;
+
+	MethodSignalListenerGeneric<object> _charactedDiedListener;
+
+	MethodSignalListenerGeneric<Health> _characterLoseHealthListener;
 
 	public Transform startPosition;
 
@@ -25,6 +30,7 @@ public class GameModeController : MonoBehaviour {
 
 	void Start () {
 		_charactedDiedListener = new MethodSignalListener (charactedDiedChannel.Get(), OnCharacterDied);
+		_characterLoseHealthListener = new MethodSignalListenerGeneric<Health> (characterLoseHealthChannel.Get<ISignalChannelGeneric<Health>>(), OnCharacterLoseHealth);
 		Restart ();
 
 //		pipote = new Example1Event ();
@@ -47,6 +53,11 @@ public class GameModeController : MonoBehaviour {
 		_mainCharacter.transform.position = startPosition.position;
 
 		gameStartedChannel.Get().Signal (this);
+	}
+
+	void OnCharacterLoseHealth(Health health)
+	{
+		Debug.Log(string.Format("Character {0} has {1} health", health.unit.name, health.current));
 	}
 
 	void OnCharacterDied (object character)

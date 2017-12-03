@@ -7,3 +7,4 @@ public class Example1SignalChannel : InterfaceObject<ISignalChannel>
 {
 	
 }
+	

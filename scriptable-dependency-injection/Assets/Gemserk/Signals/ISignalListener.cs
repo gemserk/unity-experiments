@@ -1,8 +1,17 @@
 
 namespace Gemserk.Signals
 {
-	public interface ISignalListener
+	public interface ISignalListenerGeneric<T> where T : class
 	{
-		void OnSignal(object t);
+		void OnSignal(T t);
+
+		// startListening(channel)
+
+		// stopListening(channel)
+	}
+
+	public interface ISignalListener : ISignalListenerGeneric<object>
+	{
+		
 	}
 }

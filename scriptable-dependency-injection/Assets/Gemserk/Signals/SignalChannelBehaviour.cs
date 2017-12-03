@@ -4,19 +4,19 @@ namespace Gemserk.Signals
 {
 	public class SignalChannelBehaviour : MonoBehaviour, ISignalChannel
 	{
-		readonly ISignalChannel _delegate = new SignalChannel();
+		readonly ISignalChannelGeneric<object> _delegate = new SignalChannel();
 
 		public void Signal(object signal)
 		{
 			_delegate.Signal (signal);
 		}
 
-		public void StartListening(ISignalListener handler)
+		public void StartListening(ISignalListenerGeneric<object> handler)
 		{
 			_delegate.StartListening (handler);
 		}
 
-		public void StopListening(ISignalListener handler)
+		public void StopListening(ISignalListenerGeneric<object> handler)
 		{
 			_delegate.StopListening (handler);
 		}

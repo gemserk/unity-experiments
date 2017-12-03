@@ -2,15 +2,15 @@ using System;
 
 namespace Gemserk.Signals
 {
-	public class MethodSignalListener : ISignalListener
+	public class MethodSignalListenerGeneric<T> : ISignalListenerGeneric<T> where T : class 
 	{
-		readonly ISignalChannel _channel;
+		readonly ISignalChannelGeneric<T> _channel;
 
-		readonly Action<object> _callback;
+		readonly Action<T> _callback;
 
 		bool _listening;
 
-		public MethodSignalListener(ISignalChannel channel, Action<object> callback)
+		public MethodSignalListenerGeneric(ISignalChannelGeneric<T> channel, Action<T> callback)
 		{
 			_channel = channel;
 			_callback = callback;
@@ -19,7 +19,7 @@ namespace Gemserk.Signals
 
 		#region SignalListener implementation
 
-		public void OnSignal (object t)
+		public void OnSignal (T t)
 		{
 			_callback (t);
 		}
@@ -41,6 +41,14 @@ namespace Gemserk.Signals
 			_channel.StopListening (this);
 			_listening = false;
 		}
+	}
 
+	public class MethodSignalListener : MethodSignalListenerGeneric<object>
+	{
+		public MethodSignalListener(ISignalChannelGeneric<object> channel, Action<object> callback) 
+			:base(channel, callback)
+		{
+			
+		}
 	}
 }

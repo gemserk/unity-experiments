@@ -24,12 +24,12 @@ namespace Gemserk.Signals
 			_event.Invoke (signal);
 		}
 
-		public void StartListening (ISignalListener listener)
+		public void StartListening (ISignalListenerGeneric<object> listener)
 		{
 			_event.AddListener (listener.OnSignal);
 		}
 
-		public void StopListening (ISignalListener listener)
+		public void StopListening (ISignalListenerGeneric<object> listener)
 		{
 			_event.RemoveListener(listener.OnSignal);
 		}

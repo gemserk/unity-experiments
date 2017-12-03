@@ -5,7 +5,7 @@ namespace Gemserk.Signals
 	[CreateAssetMenu(menuName="Signals/Signal Channel")]
 	public class SignalChannelAsset : ScriptableObject, ISignalChannel
 	{
-		ISignalChannel _delegate;
+		ISignalChannelGeneric<object> _delegate;
 
 		void OnEnable()
 		{		
@@ -16,17 +16,16 @@ namespace Gemserk.Signals
 		{
 			_delegate.Signal (signal);
 		}
-
-		public void StartListening(ISignalListener listener)
+			
+		public void StartListening (ISignalListenerGeneric<object> listener)
 		{
 			_delegate.StartListening (listener);
 		}
 
-		public void StopListening(ISignalListener listener)
+		public void StopListening (ISignalListenerGeneric<object> listener)
 		{
 			_delegate.StopListening (listener);
 		}
-
 	}
 
 }
