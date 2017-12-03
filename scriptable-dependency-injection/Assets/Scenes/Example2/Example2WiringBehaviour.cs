@@ -4,23 +4,25 @@ using UnityEngine.Events;
 using System;
 using Gemserk;
 
-public class Example2WiringBehaviour : MonoBehaviour, ISignalListener<object> {
+public class Example2WiringBehaviour : MonoBehaviour, ISignalListener<Health> {
+
+	// test using custom object channel like health...
 
 	[SerializableAttribute]
-	public class UnityEventObject : UnityEvent<UnityEngine.Object>
+	public class UnityEventObject : UnityEvent<Health>
 	{
 		
 	}
 
-	public SignalChannelReference signal;
+	public Example1SignalChannelHealthReference signal;
 
 	public UnityEventObject wiredMethods;
 
 	#region ISignalListener implementation
 
-	public void OnSignal (object t)
+	public void OnSignal (Health t)
 	{
-		wiredMethods.Invoke (t as UnityEngine.Object);
+		wiredMethods.Invoke (t);
 	}
 
 	#endregion

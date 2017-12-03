@@ -140,7 +140,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   signal:
-    _object: {fileID: 11400000, guid: 9f41aa9cfc5252b47a685961b8d80006, type: 2}
+    _object: {fileID: 11400000, guid: 69dd98364af2cf94aa4695187daf9079, type: 2}
   testKey: 49
 --- !u!4 &392342052
 Transform:
@@ -184,7 +184,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   signal:
-    _object: {fileID: 11400000, guid: 9f41aa9cfc5252b47a685961b8d80006, type: 2}
+    _object: {fileID: 11400000, guid: 69dd98364af2cf94aa4695187daf9079, type: 2}
   wiredMethods:
     m_PersistentCalls:
       m_Calls:
@@ -241,7 +241,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2103977178
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -254,7 +254,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   channel:
-    _object: {fileID: 11400000, guid: 9f41aa9cfc5252b47a685961b8d80006, type: 2}
+    _object: {fileID: 11400000, guid: 69dd98364af2cf94aa4695187daf9079, type: 2}
   message: Signal!!
 --- !u!4 &2103977179
 Transform:

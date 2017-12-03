@@ -1,17 +1,18 @@
 ﻿using UnityEngine;
-using Gemserk.Signals;
-using Gemserk;
 
 public class Example2SignalGenerator : MonoBehaviour {
 
-	public SignalChannelReference signal;
+	public Example1SignalChannelHealthReference signal;
 
 	public KeyCode testKey = KeyCode.Alpha1;
 
 	void Update()
 	{
 		if (Input.GetKeyUp (testKey)) {
-			signal.Get().Signal (this.gameObject);
+			signal.Get().Signal (new Health() {
+				current = 50,
+				unit = this.gameObject
+			});
 		}
 	}
 }
