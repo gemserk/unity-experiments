@@ -19,8 +19,13 @@ public class Example2WiringBehaviour : MonoBehaviour, ISignalListener<Health> {
 	#endregion
 
 	// Use this for initialization
-	void Start () {
+	void OnEnable () {
 		signal.Get().StartListening (this);
+	}
+
+	void OnDisable()
+	{
+		signal.Get().StopListening(this);
 	}
 
 }

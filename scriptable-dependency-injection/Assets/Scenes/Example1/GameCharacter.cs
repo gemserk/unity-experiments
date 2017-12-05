@@ -28,10 +28,13 @@ public class GameCharacter : MonoBehaviour
 				charactedDiedChannel.Get ().Signal (this.gameObject);
 			} else {
 			
-				characterLoseHealthChannel.Get<ISignalChannel<Health>> ().Signal(new Health() {
+				var health = new Health () {
 					current = totalHealth,
 					unit = this.gameObject
-				});
+				};
+				characterLoseHealthChannel.Get<ISignalChannel<Health>> ().Signal (health);
+			
+				totalHealth = health.current;
 			}
 		}
 	}

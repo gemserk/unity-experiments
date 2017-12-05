@@ -457,8 +457,9 @@ MonoBehaviour:
     _object: {fileID: 11400000, guid: efb80a371b7beef4a83e0b13255741dd, type: 2}
   gameOverChannel:
     _object: {fileID: 11400000, guid: 23515ca4982c73d4d8d5fd39a0973781, type: 2}
-  charactedDiedChannel:
-    _object: {fileID: 11400000, guid: 093672c48ffbadb4596ff8d1ebd860b7, type: 2}
+  _characterDiedChannel:
+    _channel:
+      _object: {fileID: 11400000, guid: 093672c48ffbadb4596ff8d1ebd860b7, type: 2}
   characterLoseHealthChannel:
     _object: {fileID: 11400000, guid: 439d27ee815b24d45b06bc693edce974, type: 2}
   startPosition: {fileID: 1512357012}

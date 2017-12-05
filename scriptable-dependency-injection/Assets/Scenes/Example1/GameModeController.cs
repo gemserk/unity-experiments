@@ -1,17 +1,53 @@
 ﻿using System.Collections;
 using UnityEngine;
 using Gemserk.Signals;
+using System;
+using Gemserk;
+
+[SerializableAttribute]
+public class SignalChannelCallbackBinding
+{
+	[SerializeField]
+	protected InterfaceReference _channel;
+
+	CallbackSignalListener<object> _callback;
+
+	public ISignalChannel<object> GetChannel()
+	{
+		return _channel.Get<ISignalChannel<object>> ();
+	}
+
+	public void StartListening(Action<object> callback)
+	{
+		StopListening ();
+
+		if (callback == null)
+			return;
+
+		_callback = new CallbackSignalListener<object> (_channel.Get<ISignalChannel<object>>(), callback);
+		_callback.StartListening ();
+	}
+
+	public void StopListening()
+	{
+		if (_callback != null) {
+			_callback.StopListening ();
+			_callback = null;
+		}
+	}
+}
 
 public class GameModeController : MonoBehaviour {
 
 	public Example1SignalChannel gameStartedChannel;
 	public Example1SignalChannel gameOverChannel;
-	public Example1SignalChannel charactedDiedChannel;
+
+	[SerializeField]
+	protected SignalChannelCallbackBinding _characterDiedChannel;
 
 	public Example1SignalChannelHealthReference characterLoseHealthChannel;
 
-	CallbackSignalListener<object> _charactedDiedListener;
-
+//	CallbackSignalListener<object> _charactedDiedListener;
 	CallbackSignalListener<Health> _characterLoseHealthListener;
 
 	public Transform startPosition;
@@ -20,25 +56,11 @@ public class GameModeController : MonoBehaviour {
 
 	GameObject _mainCharacter;
 
-//	Example1Event pipote = new Example1Event();
-
-//	public void PipoteCall(object obj)
-//	{
-//		
-//	}
-
 	void Start () {
-		_charactedDiedListener = new CallbackSignalListener<object> (charactedDiedChannel.Get(), OnCharacterDied);
+//		_charactedDiedListener = new CallbackSignalListener<object> (charactedDiedChannel.Get(), OnCharacterDied);
+		_characterDiedChannel.StartListening (OnCharacterDied);
 		_characterLoseHealthListener = new CallbackSignalListener<Health> (characterLoseHealthChannel.Get(), OnCharacterLoseHealth);
 		Restart ();
-
-//		pipote = new Example1Event ();
-
-//		pipote.AddListener (delegate(object arg0) {
-//			Debug.Log((arg0 as GameObject).name);
-//		});
-//
-//		pipote.Invoke (this.gameObject);
 	}
 
 	void Restart()
@@ -57,6 +79,8 @@ public class GameModeController : MonoBehaviour {
 	void OnCharacterLoseHealth(Health health)
 	{
 		Debug.Log(string.Format("Character {0} has {1} health", health.unit.name, health.current));
+
+		health.current += 30;
 	}
 
 	void OnCharacterDied (object character)
