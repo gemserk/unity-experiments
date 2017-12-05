@@ -24,4 +24,9 @@ public class Example2CleanBehaviour : MonoBehaviour {
 		//		}
 	}
 
+	public void MethodForObject(object o)
+	{
+		
+	}
+
 }

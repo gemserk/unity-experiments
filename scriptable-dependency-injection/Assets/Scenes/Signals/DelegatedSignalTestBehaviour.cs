@@ -5,7 +5,7 @@ public class DelegatedSignalTestBehaviour : MonoBehaviour
 {
 	public SignalChannelReference signal1;
 
-	MethodSignalListener<object> _methodSignalListener;
+	CallbackSignalListener<object> _methodSignalListener;
 
 	#region SignalHandler implementation
 
@@ -17,7 +17,7 @@ public class DelegatedSignalTestBehaviour : MonoBehaviour
 
 	void Awake()
 	{
-		_methodSignalListener = new MethodSignalListener<object> (signal1.Get(), MyCustomMethod);
+		_methodSignalListener = new CallbackSignalListener<object> (signal1.Get(), MyCustomMethod);
 	}
 
 	void OnEnable()

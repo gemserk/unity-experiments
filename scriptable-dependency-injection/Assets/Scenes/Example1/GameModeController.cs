@@ -10,9 +10,9 @@ public class GameModeController : MonoBehaviour {
 
 	public Example1SignalChannelHealthReference characterLoseHealthChannel;
 
-	MethodSignalListener<object> _charactedDiedListener;
+	CallbackSignalListener<object> _charactedDiedListener;
 
-	MethodSignalListener<Health> _characterLoseHealthListener;
+	CallbackSignalListener<Health> _characterLoseHealthListener;
 
 	public Transform startPosition;
 
@@ -28,8 +28,8 @@ public class GameModeController : MonoBehaviour {
 //	}
 
 	void Start () {
-		_charactedDiedListener = new MethodSignalListener<object> (charactedDiedChannel.Get(), OnCharacterDied);
-		_characterLoseHealthListener = new MethodSignalListener<Health> (characterLoseHealthChannel.Get(), OnCharacterLoseHealth);
+		_charactedDiedListener = new CallbackSignalListener<object> (charactedDiedChannel.Get(), OnCharacterDied);
+		_characterLoseHealthListener = new CallbackSignalListener<Health> (characterLoseHealthChannel.Get(), OnCharacterLoseHealth);
 		Restart ();
 
 //		pipote = new Example1Event ();

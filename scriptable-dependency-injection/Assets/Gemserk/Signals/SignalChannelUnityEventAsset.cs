@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace Gemserk.Signals
 {
@@ -8,11 +7,6 @@ namespace Gemserk.Signals
 	[CreateAssetMenu(menuName="Gemserk/Unity Event Channel")]
 	public class SignalChannelUnityEventAsset : ScriptableObject, ISignalChannel<object>
 	{
-		class UnityEventSignal : UnityEvent<object>
-		{
-
-		}
-
 		UnityEventSignal _event;
 
 		void OnEnable()

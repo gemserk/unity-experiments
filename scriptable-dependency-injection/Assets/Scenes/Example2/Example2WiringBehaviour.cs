@@ -1,22 +1,13 @@
 ﻿using UnityEngine;
 using Gemserk.Signals;
-using UnityEngine.Events;
-using System;
-using Gemserk;
 
 public class Example2WiringBehaviour : MonoBehaviour, ISignalListener<Health> {
 
-	// test using custom object channel like health...
-
-	[SerializableAttribute]
-	public class UnityEventObject : UnityEvent<Health>
-	{
-		
-	}
-
 	public Example1SignalChannelHealthReference signal;
 
-	public UnityEventObject wiredMethods;
+	public Example2UnityEventHealth wiredMethods;
+
+	public UnityEventSignal otherMethod;
 
 	#region ISignalListener implementation
 

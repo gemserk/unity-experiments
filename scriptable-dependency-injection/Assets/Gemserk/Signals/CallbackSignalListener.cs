@@ -2,7 +2,7 @@ using System;
 
 namespace Gemserk.Signals
 {
-	public class MethodSignalListener<T> : ISignalListener<T> where T : class 
+	public class CallbackSignalListener<T> : ISignalListener<T> where T : class 
 	{
 		readonly ISignalChannel<T> _channel;
 
@@ -10,7 +10,7 @@ namespace Gemserk.Signals
 
 		bool _listening;
 
-		public MethodSignalListener(ISignalChannel<T> channel, Action<T> callback)
+		public CallbackSignalListener(ISignalChannel<T> channel, Action<T> callback)
 		{
 			_channel = channel;
 			_callback = callback;
