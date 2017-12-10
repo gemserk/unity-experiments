@@ -23,6 +23,12 @@ namespace Gemserk
 			return _cachedGameObject as T;
 		}
 
+		public void Set<T>(T t) where T : class
+		{
+			_cachedGameObject = t;
+			_object = t as UnityEngine.Object;
+		}
+
 	}
 
 }
