@@ -12,6 +12,9 @@ namespace Gemserk
 
 		public T Get<T>() where T : class
 		{
+			if (_object == null)
+				return _cachedGameObject as T;
+			
 			var go = _object as GameObject;
 
 			if (go != null) {

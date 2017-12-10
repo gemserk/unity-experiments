@@ -64,7 +64,6 @@ public class InterfaceObjectTests {
 		Assert.That (interfaceObject.Get () != null);
 		Assert.That (interfaceObject.Get () == otherImpl2);
 		Assert.That (interfaceObject._object == null);
-
 	}
 
 	[Test]
@@ -78,4 +77,29 @@ public class InterfaceObjectTests {
 //		Assert.That(testImpl.GetType().IsAssignableFrom(typeof(TestInterface)));
 	}
 
+	[Test]
+	public void TestSetInstanceReferenceOverride() {
+		var interfaceReference = new InterfaceReference ();
+
+		var gameObject = new GameObject ();
+		var interfaceImpl = gameObject.AddComponent<TestInterfaceImplementation>();
+		interfaceReference._object = interfaceImpl;
+
+		Assert.That (interfaceReference.Get<TestInterface> (), Is.SameAs(interfaceImpl));
+
+		var gameObject2 = new GameObject ();
+		var otherImpl = gameObject2.AddComponent<TestInterfaceImplementation>();
+
+		interfaceReference.Set (otherImpl);
+		Assert.That (interfaceReference.Get<TestInterface> () != null);
+		Assert.That (interfaceReference.Get<TestInterface> (), Is.SameAs(otherImpl));
+		Assert.That (interfaceReference._object != null);
+		Assert.That (interfaceReference._object == otherImpl);
+
+		var otherImpl2 = new TestInterfaceImplementationNotBehaviour ();
+		interfaceReference.Set (otherImpl2);
+		Assert.That (interfaceReference.Get<TestInterface> () != null);
+		Assert.That (interfaceReference.Get<TestInterface> () == otherImpl2);
+		Assert.That (interfaceReference._object == null);
+	}
 }
