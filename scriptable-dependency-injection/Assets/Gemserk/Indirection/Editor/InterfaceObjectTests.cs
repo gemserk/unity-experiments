@@ -27,7 +27,7 @@ public class InterfaceObjectTests {
 		var interfaceImpl = gameObject.AddComponent<TestInterfaceImplementation>();
 		interfaceObject._object = interfaceImpl;
 
-		Assert.That (interfaceObject.Get () == interfaceImpl);
+		Assert.That (interfaceObject.Get (), Is.SameAs(interfaceImpl));
 	}
 
 	[Test]
@@ -38,7 +38,7 @@ public class InterfaceObjectTests {
 		var interfaceImpl = gameObject.AddComponent<TestInterfaceImplementation>();
 		interfaceObject._object = gameObject;
 
-		Assert.That (interfaceObject.Get () == interfaceImpl);
+		Assert.That (interfaceObject.Get (), Is.SameAs(interfaceImpl));
 	}
 
 	[Test]
@@ -49,13 +49,13 @@ public class InterfaceObjectTests {
 		var interfaceImpl = gameObject.AddComponent<TestInterfaceImplementation>();
 		interfaceObject._object = interfaceImpl;
 
-		Assert.That (interfaceObject.Get () == interfaceImpl);
+		Assert.That (interfaceObject.Get (), Is.SameAs(interfaceImpl));
 		var gameObject2 = new GameObject ();
 		var otherImpl = gameObject2.AddComponent<TestInterfaceImplementation>();
 
 		interfaceObject.Set (otherImpl);
 		Assert.That (interfaceObject.Get () != null);
-		Assert.That (interfaceObject.Get () == otherImpl);
+		Assert.That (interfaceObject.Get (), Is.SameAs(otherImpl));
 		Assert.That (interfaceObject._object != null);
 		Assert.That (interfaceObject._object == otherImpl);
 
@@ -65,6 +65,17 @@ public class InterfaceObjectTests {
 		Assert.That (interfaceObject.Get () == otherImpl2);
 		Assert.That (interfaceObject._object == null);
 
+	}
+
+	[Test]
+	public void TestAssignableFrom() {
+
+		var gameObject = new GameObject ();
+		var testImpl = gameObject.AddComponent<TestInterfaceImplementation>();
+
+		Assert.That(typeof(TestInterface).IsAssignableFrom(testImpl.GetType()));
+
+//		Assert.That(testImpl.GetType().IsAssignableFrom(typeof(TestInterface)));
 	}
 
 }
