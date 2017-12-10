@@ -21,6 +21,11 @@ namespace Gemserk
 			}
 			return _instance;
 		}
+
+		public void Set(T t) {
+			_instance = t;
+			_object = t as UnityEngine.Object;
+		}
 	}
 		
 }
