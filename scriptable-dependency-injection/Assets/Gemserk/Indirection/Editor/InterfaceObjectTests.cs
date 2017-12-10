@@ -2,7 +2,7 @@
 using NUnit.Framework;
 using Gemserk;
 
-public class InterfaceContainersTests {
+public class InterfaceObjectTests {
 
 	interface TestInterface {
 		
